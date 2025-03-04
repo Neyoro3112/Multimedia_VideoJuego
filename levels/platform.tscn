@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7q3f2ushbcwj"]
+
+[ext_resource type="Texture2D" uid="uid://davy1cosor7oc" path="res://assets/SpriteSheets/placeholders/ScaledTiles/Mossy - FloatingPlatforms.png" id="1_7xh1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hg0t"]
+size = Vector2(32, 13)
+
+[node name="Platform" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7xh1s")
+region_enabled = true
+region_rect = Rect2(15.3761, 0.467124, 32.5134, 15.3135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7hg0t")
+one_way_collision = true

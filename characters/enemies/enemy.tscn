@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpbjmulbwq8mp"]
+
+[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
+[ext_resource type="Texture2D" uid="uid://bcxrihmhw3q38" path="res://assets/SpriteSheets/ZOMBIE_MEAT_COOKING.png" id="2_ge0uu"]
+[ext_resource type="Script" path="res://components/health.gd" id="3_x0b21"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jlsa1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk6cj"]
+atlas = ExtResource("2_ge0uu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l20bt"]
+atlas = ExtResource("2_ge0uu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrvh8"]
+atlas = ExtResource("2_ge0uu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7bxe"]
+atlas = ExtResource("2_ge0uu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ln5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk6cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l20bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrvh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7bxe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfo1i"]
+size = Vector2(24, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy7me"]
+size = Vector2(28, 27)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
+script = ExtResource("1_o0xbe")
+healthComponent = NodePath("HealthComponent")
+
+[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r3ln5")
+frame_progress = 0.385702
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3.5)
+shape = SubResource("RectangleShape2D_cfo1i")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_x0b21")
+max_health = 5
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -34.0
+offset_right = 17.0
+offset_bottom = -11.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerCharacter")]
+script = ExtResource("4_jlsa1")
+damage = 1
+ownerCharacter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_dy7me")
+debug_color = Color(0.990077, 0, 0.282775, 0.42)
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
