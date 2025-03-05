@@ -26,5 +26,5 @@ func check_transitions(transitionList: Array[Callable] = []):
 	for check in checking_list:
 		var next_state = check.call()  # Llamar a la función de verificación
 		if next_state:  # Si devuelve un estado válido
-			transitioned.emit(self, next_state)
+			transitioned.emit(next_state)
 			return

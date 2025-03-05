@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerIdle
 
-func enter():
+func _ready() -> void:
 	transition_checks = [
 		should_transition_to_jump(),
 		should_transition_to_attack, 

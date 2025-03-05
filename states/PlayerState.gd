@@ -8,7 +8,8 @@ const JUMPING = "jumping"
 const FALLING = "falling"
 const ROLLING = "rolling"
 const ATTACKING = "attacking"
-const KNOCKBACK = "knockback"
+const HIT = "hit"
+const DEATH = "death"
 
 func check_action_pressed(action: StringName,just_pressed: bool = false):
 	return Input.is_action_just_pressed(action) if just_pressed else Input.is_action_pressed(action)
@@ -20,7 +21,6 @@ func _ready() -> void:
 	
 func update_player_direction():
 	player.direction = Input.get_axis("move_left", "move_right")
-	player.check_direction()
 	
 func apply_movement(_delta: float, movement_speed: float = player.speed):
 	update_player_direction()

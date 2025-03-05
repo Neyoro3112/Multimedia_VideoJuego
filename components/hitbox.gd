@@ -11,7 +11,7 @@ extends Area2D
 @export var ownerHurtbox: HurtBox
 
 ## Indica el porcentaje del daño que puede hacer el ataque a su propio creador si lo puede tocar.
-@export var ownerHurtBoxMultiplier: float = 0 
+@export var ownerHurtBoxMultiplier: float = 0
 
 func _ready():
 	area_entered.connect(_on_area_entered)
@@ -22,5 +22,5 @@ func _on_area_entered(hurtbox: HurtBox) -> void:
 	var true_damage = damage
 	if hurtbox == ownerHurtbox:
 		true_damage = round(damage * ownerHurtBoxMultiplier)
-	
-	hurtbox.hit(true_damage)
+	if hurtbox.is_in_group("EnemyBox") != is_in_group("EnemyBox"):
+		hurtbox.getHit(true_damage, self)

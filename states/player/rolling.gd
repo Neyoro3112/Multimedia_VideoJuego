@@ -4,16 +4,15 @@ class_name PlayerRolling
 @onready var timer = $RollDuration
 var original_timescale: float
 
-func enter():
-	original_timescale = player.animation_controller.get_animation_timescale(PlayerAnimations.Roll)
-	print("Timescale: ",original_timescale)
+func _ready():
 	transition_checks = [
 		should_transition_to_jump(false),
 		should_transition_to_walk,
 		should_transition_to_idle
 	]
-	timer.one_shot = true
-	timer.wait_time = player.roll_time
+	original_timescale = player.animation_controller.get_animation_timescale(PlayerAnimations.Roll)
+	
+func enter():
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
 
@@ -22,7 +21,7 @@ func update(_delta: float):
 func physics_update(delta: float):
 	update_physics(delta, 0, func():
 		var roll_progress = timer.time_left / timer.wait_time
-		player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.3, original_timescale, roll_progress))
+		player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.4, original_timescale, roll_progress))
 		player.velocity.x = (1 if player.facing_right else -1) * lerp(player.roll_speed * 0.08, player.roll_speed, roll_progress)
 	)
 	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding():

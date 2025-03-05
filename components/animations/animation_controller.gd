@@ -8,11 +8,8 @@ extends Node
 ## Es el AnimationPlayback usado por el AnimationTree
 var playback: AnimationNodeStateMachinePlayback
 
-var is_playing_animation: bool : get = get_animation_playing
 var current_animation: String : get = get_current_animation
 
-func get_animation_playing():
-	return playback.is_playing()
 func get_current_animation():
 	return str(playback.get_current_node())
 
@@ -24,14 +21,11 @@ func _ready():
 	playback = tree.get("parameters/playback")
 	assert(playback != null, "AnimationTree has not a AnimationPlayback")
 
-
+	tree.active = true
 
 func update_animation(animation_name: String):
 	if current_animation != animation_name:
 		playback.travel(animation_name)
-		
-	#elif not player.is_playing():
-	#	playback.travel(animation)
 
 func randomize_animation(animation_name: String, number_choices: int):
 	var animation_randomizer = "parameters/%s/randomizer/blend_position" % animation_name

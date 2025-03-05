@@ -2,11 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 @export var animation_controller: AnimationController
-@export var jump_time := 0.3
-@export var roll_time := 0.5
 @export var facing_right = true
-@export var speed = 200
-@export var run_speed = 300
+@export var speed = 150
+@export var run_speed = 200
 @export var jump_speed = 300
 @export var attack_speed = 100
 @export var roll_speed = 520.
@@ -22,7 +20,11 @@ func set_locked_side(value: bool):
 
 var last_rolling_state = false
 
-var direction = 0
+var direction = 0 : set = set_player_direction
+
+func set_player_direction(new_direction: int):
+	direction = clamp(round(new_direction), -1, 1)
+	check_direction()
 
 
 func _ready():

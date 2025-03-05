@@ -5,8 +5,6 @@ class_name PlayerJumping
 
 func enter():
 	player.velocity.y = -player.jump_speed
-	timer.one_shot = true
-	timer.wait_time = player.jump_time
 	timer.start()
 
 func update(_delta: float):
@@ -25,7 +23,7 @@ func physics_update(delta: float):
 
 	# Cuando el tiempo de salto se acaba, pasa a caída
 	if player.velocity.y >= 0 or player.is_on_ceiling():
-		transitioned.emit(self, FALLING)
+		transitioned.emit(FALLING)
 
 func exit():
 	timer.stop()

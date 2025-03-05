@@ -5,6 +5,11 @@ extends Node
 signal max_health_changed(current:int, diff: int)
 signal health_changed(current:int, diff: int)
 signal health_depleted
+signal immortability_change(value: bool)
+
+@export var immortability_timer: Timer
+
+
 
 ## Es la cantidad de vida máxima del jugador
 @export var max_health: int : set = set_max_health, get = get_max_health
@@ -14,6 +19,30 @@ signal health_depleted
 
 ## Es la cantidad de vida actual del jugador
 @onready var health: int = max_health : set = set_health, get = get_health
+
+func _ready():
+	if immortability_timer == null: immortability_timer = $Timer
+	if immortability_timer:
+		immortability_timer.one_shot = true
+		immortability_timer.autostart = false
+		
+		immortability_timer.timeout.connect(disable_immortability)
+
+func set_immortability(value: bool):
+	immortability = value
+	immortability_change.emit(immortability)
+	
+	
+func disable_immortability():
+	immortability = false
+	
+
+func start_immortability_timer():
+	if !immortability_timer: 
+		print("Immortability timer is: ", immortability_timer)
+		return
+	immortability = true
+	immortability_timer.start()
 
 func set_max_health(value: int):
 	
@@ -38,6 +67,8 @@ func get_immortality() -> bool:
 	
 func set_health(value: int):
 	var clamped = clampi(value, 0, max_health)
+	if immortability: 
+		return
 	
 	if clamped != health:
 		var diff = clamped - health

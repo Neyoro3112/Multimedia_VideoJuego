@@ -9,4 +9,4 @@ func physics_update(delta: float):
 
 	# Asegurar transición correcta al tocar el suelo
 	if player.is_on_floor():
-		transitioned.emit(self, WALKING if player.direction != 0 else IDLE)
+		transitioned.emit(WALKING if player.direction != 0 else IDLE)

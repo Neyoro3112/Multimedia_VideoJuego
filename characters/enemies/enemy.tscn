@@ -65,6 +65,9 @@ shape = SubResource("RectangleShape2D_cfo1i")
 script = ExtResource("3_x0b21")
 max_health = 20
 
+[node name="Timer" type="Timer" parent="HealthComponent"]
+wait_time = 0.5
+
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -23.0
 offset_top = -34.0
@@ -75,11 +78,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_3vt6o")
 
-[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerHurtbox")]
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerHurtbox") groups=["EnemyBox"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_jlsa1")
 damage = 1
+knockbak = 200
 ownerHurtbox = NodePath("../HurtBox")
 metadata/_custom_type_script = "uid://dfdukj8kh40sl"
 
@@ -88,7 +92,7 @@ position = Vector2(-2, 4.5)
 shape = SubResource("RectangleShape2D_dy7me")
 debug_color = Color(0.990077, 0, 0.282775, 0.42)
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent") groups=["EnemyBox"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("6_bi512")

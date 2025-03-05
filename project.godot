@@ -23,6 +23,10 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+EnemyBox="Pertenecen a el todas las hitbox o hurtbox de enemigos"
+
 [input]
 
 run={
