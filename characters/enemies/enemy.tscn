@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://cpbjmulbwq8mp"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
+[ext_resource type="Script" uid="uid://bcrf2w41qtfn8" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
 [ext_resource type="Texture2D" uid="uid://bcxrihmhw3q38" path="res://assets/SpriteSheets/ZOMBIE_MEAT_COOKING.png" id="2_ge0uu"]
-[ext_resource type="Script" path="res://components/health.gd" id="3_x0b21"]
-[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jlsa1"]
+[ext_resource type="Script" uid="uid://c5qbl3ydi7802" path="res://components/health.gd" id="3_x0b21"]
+[ext_resource type="Script" uid="uid://dc5ydrxir6bps" path="res://components/hurtbox.gd" id="4_jlsa1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk6cj"]
 atlas = ExtResource("2_ge0uu")
