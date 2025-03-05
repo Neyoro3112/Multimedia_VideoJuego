@@ -1,4 +1,4 @@
-extends Character
+extends CharacterBody2D
 
 const SPEED = 60
 
@@ -7,7 +7,6 @@ const SPEED = 60
 @onready var label = $HealthLabel
 
 func _ready() -> void:
-	label.text = str(healthComponent.health)
 	animation.play()
 
 var direction = 1
@@ -23,4 +22,4 @@ func _process(delta: float) -> void:
 
 
 func _on_health_component_health_changed(_diff: int) -> void:
-	label.text = str(healthComponent.health)
+	pass

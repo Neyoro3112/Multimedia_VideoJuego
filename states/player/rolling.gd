@@ -18,14 +18,15 @@ func enter():
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
 
 func update(_delta: float):
-	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding():
-		check_transitions()
+	pass
 func physics_update(delta: float):
 	update_physics(delta, 0, func():
 		var roll_progress = timer.time_left / timer.wait_time
 		player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.3, original_timescale, roll_progress))
 		player.velocity.x = (1 if player.facing_right else -1) * lerp(player.roll_speed * 0.08, player.roll_speed, roll_progress)
 	)
+	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding():
+		check_transitions()
 	
 	
 

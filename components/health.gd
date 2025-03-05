@@ -2,8 +2,8 @@ class_name HealthComponent
 extends Node
 
 ## Emite una señal cada vez que se actualiza la vida máxima del jugador
-signal max_health_changed(diff: int)
-signal health_changed(diff: int)
+signal max_health_changed(current:int, diff: int)
+signal health_changed(current:int, diff: int)
 signal health_depleted
 
 ## Es la cantidad de vida máxima del jugador
@@ -22,7 +22,7 @@ func set_max_health(value: int):
 	if not clamped == max_health:
 		var diff = clamped - max_health
 		max_health = clamped
-		max_health_changed.emit(diff)
+		max_health_changed.emit(max_health, diff)
 		
 		if health > max_health:
 			health = max_health
@@ -42,7 +42,7 @@ func set_health(value: int):
 	if clamped != health:
 		var diff = clamped - health
 		health = clamped
-		health_changed.emit(diff)
+		health_changed.emit(health, diff)
 		
 		if health == 0:
 			health_depleted.emit()

@@ -11,18 +11,17 @@ func enter():
 		should_transition_to_idle,
 		should_transition_to_walk
 	]
-	
+	player.animation_controller.randomize_animation(PlayerAnimations.Attack, 3)
 	timer.one_shot = true
 	timer.start()
 
 func update(_delta: float):
 	player.animation_controller.update_animation(PlayerAnimations.Attack)
-	if timer.is_stopped():
-		check_transitions()
+	
+	
 
 
 func physics_update(_delta: float):
 	update_physics(_delta, player.attack_speed)
-	
-	
-	
+	if timer.is_stopped():
+		check_transitions()	

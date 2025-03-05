@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpbjmulbwq8mp"]
+[gd_scene load_steps=14 format=3 uid="uid://cpbjmulbwq8mp"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
+[ext_resource type="Script" uid="uid://c42vvyk1scgwc" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
 [ext_resource type="Texture2D" uid="uid://bcxrihmhw3q38" path="res://assets/SpriteSheets/ZOMBIE_MEAT_COOKING.png" id="2_ge0uu"]
-[ext_resource type="Script" path="res://components/health.gd" id="3_x0b21"]
-[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jlsa1"]
+[ext_resource type="Script" uid="uid://q857pellbhu7" path="res://components/health.gd" id="3_x0b21"]
+[ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="4_3vt6o"]
+[ext_resource type="Script" uid="uid://dfdukj8kh40sl" path="res://components/hitbox.gd" id="4_jlsa1"]
+[ext_resource type="Script" uid="uid://bxutyjd252rd6" path="res://components/hurtbox.gd" id="6_bi512"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk6cj"]
 atlas = ExtResource("2_ge0uu")
@@ -45,11 +47,11 @@ animations = [{
 size = Vector2(24, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy7me"]
-size = Vector2(28, 27)
+size = Vector2(20, 23)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent")]
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_o0xbe")
-healthComponent = NodePath("HealthComponent")
 
 [node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r3ln5")
@@ -61,24 +63,41 @@ shape = SubResource("RectangleShape2D_cfo1i")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_x0b21")
-max_health = 5
+max_health = 20
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -23.0
 offset_top = -34.0
 offset_right = 17.0
 offset_bottom = -11.0
+text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_3vt6o")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerCharacter")]
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerHurtbox")]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("4_jlsa1")
 damage = 1
-ownerCharacter = NodePath("..")
+ownerHurtbox = NodePath("../HurtBox")
+metadata/_custom_type_script = "uid://dfdukj8kh40sl"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-2, 2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-2, 4.5)
 shape = SubResource("RectangleShape2D_dy7me")
 debug_color = Color(0.990077, 0, 0.282775, 0.42)
 
-[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_bi512")
+healthComponent = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxutyjd252rd6"
+
+[node name="Collider" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-2, 3.5)
+shape = SubResource("RectangleShape2D_cfo1i")
+debug_color = Color(0.668229, 0.510282, 0, 0.42)
+
+[connection signal="health_changed" from="HealthComponent" to="HealthLabel" method="_on_health_health_changed"]

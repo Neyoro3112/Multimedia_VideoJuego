@@ -217,8 +217,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wydwn"]
 _data = {
-"RESET": SubResource("Animation_iwwqb"),
-"move": SubResource("Animation_oe1sr")
+&"RESET": SubResource("Animation_iwwqb"),
+&"move": SubResource("Animation_oe1sr")
 }
 
 [node name="Escenario" type="Node2D"]
@@ -262,7 +262,7 @@ position = Vector2(752, 209)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
 libraries = {
-"": SubResource("AnimationLibrary_wydwn")
+&"": SubResource("AnimationLibrary_wydwn")
 }
 autoplay = "move"
 playback_auto_capture_transition_type = 8

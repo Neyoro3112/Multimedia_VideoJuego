@@ -1,4 +1,4 @@
-extends Character
+extends CharacterBody2D
 class_name Player
 
 @export var animation_controller: AnimationController
@@ -28,7 +28,6 @@ var direction = 0
 func _ready():
 	
 	animation_controller.update_side(facing_right)
-	$HealthLabel.text = str(healthComponent.health)
 	
 
 func check_direction():
@@ -37,9 +36,3 @@ func check_direction():
 	if new_facing_right != facing_right:
 		facing_right = new_facing_right
 		animation_controller.update_side(facing_right)
-	
-	
-
-
-func _on_health_health_changed(_diff: int) -> void:
-	$HealthLabel.text = str(healthComponent.health)
