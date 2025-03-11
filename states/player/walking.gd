@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerWalking
 
-func enter():
+func _ready():
 	transition_checks = [
 		should_transition_to_jump(),
 		should_transition_to_attack,
@@ -10,9 +10,11 @@ func enter():
 		should_transition_to_idle,
 		should_transition_to_run
 	]
+	
+func enter():
+	player.animation_controller.update_animation(PlayerAnimations.Walk)
 
 func update(_delta: float):
-	player.animation_controller.update_animation(PlayerAnimations.Walk)
 	check_transitions()
 
 func physics_update(delta: float):

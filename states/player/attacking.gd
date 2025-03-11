@@ -17,14 +17,8 @@ func _ready() -> void:
 func enter():
 	
 	player.animation_controller.randomize_animation(PlayerAnimations.Attack, 3)
-	timer.start()
-
-func update(_delta: float):
 	player.animation_controller.update_animation(PlayerAnimations.Attack)
-	
-	
-
-
+	timer.start()
 func physics_update(_delta: float):
 	update_physics(_delta, player.attack_speed)
 	if timer.is_stopped():

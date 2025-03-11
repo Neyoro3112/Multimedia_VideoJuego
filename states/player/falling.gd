@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerFalling
 
-func update(_delta: float):
+func enter():
 	player.animation_controller.update_animation(PlayerAnimations.Fall)
 
 func physics_update(delta: float):

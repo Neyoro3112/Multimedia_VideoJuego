@@ -6,10 +6,7 @@ class_name PlayerJumping
 func enter():
 	player.velocity.y = -player.jump_speed
 	timer.start()
-
-func update(_delta: float):
 	player.animation_controller.update_animation(PlayerAnimations.Jump)
-	pass
 	
 
 func physics_update(delta: float):
@@ -19,7 +16,7 @@ func physics_update(delta: float):
 	if Input.is_action_pressed("jump") and not timer.is_stopped():
 		player.velocity.y = -player.jump_speed
 	elif not Input.is_action_pressed("jump"):
-		player.velocity.y = 0		
+		player.velocity.y = 0	
 	else:
 		timer.stop()
 

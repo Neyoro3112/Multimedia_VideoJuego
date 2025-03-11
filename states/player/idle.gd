@@ -10,7 +10,7 @@ func _ready() -> void:
 		should_transition_to_walk
 	]
 
-func update(_delta: float):
+func enter():
 	player.animation_controller.update_animation(PlayerAnimations.Idle)
 
 

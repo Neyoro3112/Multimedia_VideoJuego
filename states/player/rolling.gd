@@ -16,8 +16,6 @@ func enter():
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
 
-func update(_delta: float):
-	pass
 func physics_update(delta: float):
 	update_physics(delta, 0, func():
 		var roll_progress = timer.time_left / timer.wait_time

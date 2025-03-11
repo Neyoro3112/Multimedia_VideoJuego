@@ -30,9 +30,4 @@ func physics_update(delta: float):
 	apply_gravity(delta)
 	player.move_and_slide()
 	if player.velocity.x == 0:
-		#player.direction = 0
-		print("Trying transition: ", player.direction)
 		check_transitions()
-		
-func exit():
-	print("Ended hit")
