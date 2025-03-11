@@ -1468,7 +1468,7 @@ states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
 graph_offset = Vector2(10, 59.2746)
 
-[node name="Solaire" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller")]
+[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller")]
 collision_layer = 0
 script = ExtResource("1_qlpy5")
 animation_controller = NodePath("AnimationController")
