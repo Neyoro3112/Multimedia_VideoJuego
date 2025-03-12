@@ -3,8 +3,8 @@ class_name Player
 
 @export var animation_controller: AnimationController
 @export var facing_right = true
-@export var speed = 175
-@export var run_speed = 225
+@export var speed = 160
+@export var run_speed = 215
 @export var jump_speed = 300
 @export var attack_speed = 100
 @export var roll_speed = 520.
