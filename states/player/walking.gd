@@ -1,15 +1,15 @@
 extends PlayerState
 class_name PlayerWalking
 
-func _ready():
-	transition_checks = [
-		should_transition_to_jump(),
-		should_transition_to_attack,
-		should_transition_to_fall, 
-		should_transition_to_roll,
-		should_transition_to_idle,
-		should_transition_to_run
-	]
+func get_transition_checks():
+	return {
+		FALLING: not player.is_on_floor(),
+		JUMPING: player.controller.is_action_triggered(PlayerActions.jump),
+		ATTACKING: player.controller.is_action_triggered(PlayerActions.attack), 
+		ROLLING: player.controller.is_action_triggered(PlayerActions.roll),
+		IDLE: player.direction == 0,
+		RUNNING: player.controller.is_action_held(PlayerActions.run)
+	}
 	
 func enter():
 	player.animation_controller.update_animation(PlayerAnimations.Walk)

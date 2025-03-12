@@ -3,16 +3,15 @@ extends PlayerState
 
 
 @onready var timer = $AttackDuration
-# Called when the node enters the scene tree for the first time.
 
-func _ready() -> void:
-	transition_checks = [
-		should_transition_to_jump(false), 
-		should_transition_to_fall, 
-		should_transition_to_roll,
-		should_transition_to_idle,
-		should_transition_to_walk
-	]
+func get_transition_checks():
+	return {
+		FALLING: not player.is_on_floor(), 
+		JUMPING: player.controller.is_action_triggered(PlayerActions.jump), 
+		ROLLING: player.controller.is_action_triggered(PlayerActions.roll),
+		IDLE: player.direction == 0,
+		WALKING: true
+	}
 
 func enter():
 	

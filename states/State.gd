@@ -3,10 +3,6 @@ class_name State
 
 signal transitioned
 
-var transition_checks: Array[Callable]
-
-
-
 func enter():
 	pass
 
@@ -19,12 +15,15 @@ func update(_delta: float):
 func physics_update(_delta: float):
 	pass
 
+func get_transition_checks() -> Dictionary[String, bool]:
+	return {}
 
-func check_transitions(transitionList: Array[Callable] = []):
-	var checking_list = transitionList if transitionList else transition_checks
-	
-	for check in checking_list:
-		var next_state = check.call()  # Llamar a la función de verificación
-		if next_state:  # Si devuelve un estado válido
-			transitioned.emit(next_state)
+func check_transitions():
+	var transition_checks = get_transition_checks()
+	for state_name in transition_checks:
+		  # Llamar a la función de verificación
+		
+		if transition_checks[state_name]:  # Si devuelve un estado válido
+			
+			transitioned.emit(state_name)
 			return

@@ -5,13 +5,15 @@ class_name PlayerRolling
 var original_timescale: float
 
 func _ready():
-	transition_checks = [
-		should_transition_to_jump(false),
-		should_transition_to_walk,
-		should_transition_to_idle
-	]
 	original_timescale = player.animation_controller.get_animation_timescale(PlayerAnimations.Roll)
-	
+
+func get_transition_checks():
+	return {
+		JUMPING: player.controller.is_action_triggered(PlayerActions.jump),
+		WALKING: player.direction != 0,
+		IDLE: true
+	}
+
 func enter():
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
@@ -22,7 +24,7 @@ func physics_update(delta: float):
 		player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.4, original_timescale, roll_progress))
 		player.velocity.x = (1 if player.facing_right else -1) * lerp(player.roll_speed * 0.08, player.roll_speed, roll_progress)
 	)
-	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding():
+	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding() and player.is_on_floor():
 		check_transitions()
 	
 	

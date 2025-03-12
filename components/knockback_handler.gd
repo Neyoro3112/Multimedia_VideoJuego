@@ -5,7 +5,7 @@ extends Node
 var current_hitbox: HitBox
 var knockback_direction: float
 var knockback_timer: Timer
-var velocity: int : get = get_knockback_velocity
+var velocity: float : get = get_knockback_velocity
 
 func get_knockback_velocity(): 
 	return knockback_direction * current_hitbox.knockbak
@@ -25,7 +25,7 @@ func setup_knockback(hitbox: HitBox, player_position: Vector2):
 	
 
 # Aplica el knockback en el physics_update
-func apply_knockback(delta: float, player: CharacterBody2D):
+func apply_knockback(_delta: float, player: CharacterBody2D):
 	if knockback_timer.time_left > 0:
 		player.velocity.x = lerp(
 			0., 

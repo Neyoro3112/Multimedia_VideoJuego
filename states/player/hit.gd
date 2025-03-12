@@ -5,14 +5,16 @@ var knockback_handler: KnockbackHandler
 
 func _ready():
 	knockback_handler = KnockbackHandler.new(self)
-	transition_checks = [
-		should_transition_to_jump(false),
-		should_transition_to_attack, 
-		should_transition_to_fall, 
-		should_transition_to_roll,
-		should_transition_to_walk,
-		should_transition_to_idle
-	]
+
+func get_transition_checks():
+	return {
+		FALLING: not player.is_on_floor(), 
+		JUMPING: player.controller.is_action_triggered(PlayerActions.jump),
+		ATTACKING: player.controller.is_action_triggered(PlayerActions.attack), 
+		ROLLING: player.controller.is_action_triggered(PlayerActions.roll),
+		IDLE: player.direction ==0,
+		WALKING: true
+	}
 
 func _on_hurt_box_hit(dmg: int, hitbox: HitBox) -> void:
 	if dmg == 0: return
@@ -27,7 +29,7 @@ func enter():
 
 func physics_update(delta: float):
 	knockback_handler.apply_knockback(delta, player)
-	apply_gravity(delta)
+	player.apply_gravity(delta)
 	player.move_and_slide()
 	if player.velocity.x == 0:
 		check_transitions()

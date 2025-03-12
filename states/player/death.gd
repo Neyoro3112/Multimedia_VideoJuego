@@ -16,7 +16,7 @@ func enter():
 
 func physics_update(delta: float):
 	knockback_handler.apply_knockback(delta, player)
-	apply_gravity(delta)
+	player.apply_gravity(delta)
 	player.move_and_slide()
 
 

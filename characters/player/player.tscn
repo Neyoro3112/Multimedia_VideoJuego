@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=160 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_qlpy5"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="19_kyfeq"]
 [ext_resource type="Script" uid="uid://cmqtbowdq6gcm" path="res://states/player/hit.gd" id="20_yybc7"]
 [ext_resource type="Script" uid="uid://cliqy0kjy03ec" path="res://states/player/death.gd" id="23_jgd8i"]
+[ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://characters/player/human_actions_controller.gd" id="26_4cx7u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f2pv"]
 atlas = ExtResource("2_mckqi")
@@ -945,6 +946,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:locked_side")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ukn0a"]
 resource_name = "idle"
@@ -1468,17 +1481,22 @@ states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
 graph_offset = Vector2(10, 59.2746)
 
-[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller")]
+[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller", "controller")]
 collision_layer = 0
 script = ExtResource("1_qlpy5")
 animation_controller = NodePath("AnimationController")
+controller = NodePath("HumanActionsController")
+
+[node name="HumanActionsController" type="Node" parent="."]
+script = ExtResource("26_4cx7u")
+metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 
 [node name="Facing" type="Node2D" parent="."]
 
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
-animation = &"death"
+animation = &"hit"
 
 [node name="AttackArea" type="Area2D" parent="Facing"]
 collision_layer = 4
@@ -1598,7 +1616,7 @@ script = ExtResource("15_k5ptk")
 script = ExtResource("16_ey80i")
 
 [node name="AttackDuration" type="Timer" parent="StateMachine/Attacking"]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [node name="Hit" type="Node" parent="StateMachine"]
