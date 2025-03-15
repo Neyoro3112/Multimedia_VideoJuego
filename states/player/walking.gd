@@ -8,7 +8,6 @@ func get_transition_checks():
 		ATTACKING: player.controller.is_action_triggered(PlayerActions.attack), 
 		ROLLING: player.controller.is_action_triggered(PlayerActions.roll),
 		IDLE: player.direction == 0,
-		RUNNING: player.controller.is_action_held(PlayerActions.run)
 	}
 	
 func enter():

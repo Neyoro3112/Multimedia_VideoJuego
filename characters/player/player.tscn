@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=168 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_qlpy5"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -1172,12 +1172,115 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_4cx7u"]
+resource_name = "crouch"
+length = 0.5
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Facing/Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"roll"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Facing/Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WorldCollider:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 22)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RollCeilingRaycast:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HurtBox/CollisionShape2D:shape:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(26, 23)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HurtBox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 22.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Facing/Sprites:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.406126, 0.366021),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rj6nq"]
 _data = {
 &"RESET": SubResource("Animation_yd23q"),
 &"attack": SubResource("Animation_onuag"),
 &"attack_2": SubResource("Animation_fpo3a"),
 &"attack_3": SubResource("Animation_kyfeq"),
+&"crouch": SubResource("Animation_4cx7u"),
 &"death": SubResource("Animation_bakn2"),
 &"hit": SubResource("Animation_jepfe"),
 &"idle": SubResource("Animation_ukn0a"),
@@ -1237,6 +1340,38 @@ nodes/randomizer/node = SubResource("AnimationNodeBlendSpace1D_jgd8i")
 nodes/randomizer/position = Vector2(-320, -20)
 node_connections = [&"Add2", 0, &"randomizer", &"Add2", 1, &"BlendSpace1D", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_4cx7u"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e0pgg"]
+animation = &"crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sbttr"]
+animation = &"scale_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6pj1p"]
+animation = &"scale_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3a7m8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_sbttr")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_6pj1p")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_y3et5"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0mbv2"]
+graph_offset = Vector2(-505.915, 61.9367)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_4cx7u")
+nodes/Add2/position = Vector2(-220, 20)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_e0pgg")
+nodes/Animation/position = Vector2(-600, -100)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_3a7m8")
+nodes/BlendSpace1D/position = Vector2(-580, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_y3et5")
+nodes/TimeScale/position = Vector2(60, 80)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"BlendSpace1D", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
+
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_2xk8k"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qi0sd"]
@@ -1258,7 +1393,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_4hjhg"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xvmlt"]
-graph_offset = Vector2(-650.333, 77.7816)
+graph_offset = Vector2(-742.036, -68.3233)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_2xk8k")
 nodes/Add2/position = Vector2(-140, 120)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_qi0sd")
@@ -1465,8 +1600,10 @@ node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"BlendSpace1D", &"Tim
 states/Start/position = Vector2(344, 0)
 states/attack/node = SubResource("AnimationNodeBlendTree_8u58b")
 states/attack/position = Vector2(401, 107.275)
+states/crouch/node = SubResource("AnimationNodeBlendTree_0mbv2")
+states/crouch/position = Vector2(679, 86.2746)
 states/death/node = SubResource("AnimationNodeBlendTree_xvmlt")
-states/death/position = Vector2(599, 191.275)
+states/death/position = Vector2(578, 226.275)
 states/hit/node = SubResource("AnimationNodeBlendTree_sbttr")
 states/hit/position = Vector2(554, 136.275)
 states/idle/node = SubResource("AnimationNodeBlendTree_cc0c0")
@@ -1479,13 +1616,13 @@ states/run/node = SubResource("AnimationNodeBlendTree_cohsp")
 states/run/position = Vector2(378, 201.275)
 states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
-graph_offset = Vector2(10, 59.2746)
+graph_offset = Vector2(72, -54.7254)
 
-[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller", "controller")]
+[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("controller", "animation_controller")]
 collision_layer = 0
 script = ExtResource("1_qlpy5")
-animation_controller = NodePath("AnimationController")
 controller = NodePath("HumanActionsController")
+animation_controller = NodePath("AnimationController")
 
 [node name="HumanActionsController" type="Node" parent="."]
 script = ExtResource("26_4cx7u")
@@ -1496,7 +1633,8 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
-animation = &"hit"
+animation = &"roll"
+frame = 8
 
 [node name="AttackArea" type="Area2D" parent="Facing"]
 collision_layer = 4
@@ -1538,10 +1676,6 @@ position = Vector2(0, 16.6667)
 enabled = false
 target_position = Vector2(0, -35)
 
-[node name="RollCooldownTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [node name="AnimationController" type="Node" parent="."]
 script = ExtResource("17_fftny")
 
@@ -1560,6 +1694,9 @@ parameters/attack/Add2/add_amount = 1.0
 parameters/attack/BlendSpace1D/blend_position = 0
 parameters/attack/TimeScale/scale = 3.0
 parameters/attack/randomizer/blend_position = -0.99403
+parameters/crouch/Add2/add_amount = 1.0
+parameters/crouch/BlendSpace1D/blend_position = 0
+parameters/crouch/TimeScale/scale = 2.0
 parameters/death/Add2/add_amount = 1.0
 parameters/death/BlendSpace1D/blend_position = 0
 parameters/death/TimeScale/scale = 0.5
@@ -1606,7 +1743,11 @@ script = ExtResource("13_uo411")
 script = ExtResource("14_uusi3")
 
 [node name="RollDuration" type="Timer" parent="StateMachine/Rolling"]
-wait_time = 0.5
+wait_time = 0.7
+one_shot = true
+
+[node name="RollCooldownTimer" type="Timer" parent="StateMachine/Rolling"]
+wait_time = 0.2
 one_shot = true
 
 [node name="Running" type="Node" parent="StateMachine"]

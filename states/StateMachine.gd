@@ -3,7 +3,7 @@ class_name StateMachine
 
 @export var initial_state: State
 
-var states: Dictionary = {}
+var states: Dictionary[String, State] = {}
 var current_state: State
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,7 +31,7 @@ func on_child_transition(new_state_name: String):
 	
 	var new_state = states.get(new_state_name.to_lower())
 	
-	if !new_state: return
+	if !new_state or !new_state.can_enter(): return
 	if current_state:
 		current_state.exit()
 		

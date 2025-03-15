@@ -14,6 +14,9 @@ func update(_delta: float):
 
 func physics_update(_delta: float):
 	pass
+	
+func can_enter() -> bool:
+	return true
 
 func get_transition_checks() -> Dictionary[String, bool]:
 	return {}

@@ -10,5 +10,6 @@ const Roll = "roll"
 const Attack = "attack"
 const Hit = "hit"
 const Death = "death"
+const Crouch = "crouch"
 
-const list = [Idle, Walk, Run, Fall, Jump, Roll, Attack, Hit, Death]
+const list = [Idle, Walk, Run, Fall, Jump, Roll, Attack, Hit, Death, Crouch]
