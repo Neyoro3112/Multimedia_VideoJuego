@@ -1,12 +1,23 @@
 extends PlayerState
 class_name PlayerFalling
 
+func get_transition_checks():
+	return {
+		PlayerStates.Movement.walking: player.direction != 0,
+		PlayerStates.Movement.idle: true
+	}
+
+func get_animation_checks():
+	return {
+		PlayerAnimations.Fall: player.action_fsm.is_current_state("No_action")
+	}
+
+
 func enter():
-	player.animation_controller.update_animation(PlayerAnimations.Fall)
+	update_animation()
 
 func physics_update(delta: float):
 	update_physics(delta, player.speed)
 
-	# Asegurar transición correcta al tocar el suelo
 	if player.is_on_floor():
-		transitioned.emit(WALKING if player.direction != 0 else IDLE)
+		check_transitions()

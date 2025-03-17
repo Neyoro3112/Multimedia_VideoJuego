@@ -10,8 +10,10 @@ func enter():
 	
 func get_transition_checks():
 	return {
-		FALLING: player.velocity.y >= 0 or player.is_on_ceiling()
+		PlayerStates.Movement.falling: player.velocity.y >= 0 or player.is_on_ceiling()
 	}
+
+	
 func physics_update(delta: float):
 	update_physics(delta, player.speed)
 

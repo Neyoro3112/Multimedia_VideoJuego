@@ -3,18 +3,21 @@ class_name PlayerWalking
 
 func get_transition_checks():
 	return {
-		FALLING: not player.is_on_floor(),
-		JUMPING: player.controller.is_action_triggered(PlayerActions.jump),
-		ATTACKING: player.controller.is_action_triggered(PlayerActions.attack), 
-		ROLLING: player.controller.is_action_triggered(PlayerActions.roll),
-		IDLE: player.direction == 0,
+		PlayerStates.Movement.falling: not player.is_on_floor(),
+		PlayerStates.Movement.jumping: player.controller.is_action_triggered(PlayerActions.jump),
+		PlayerStates.Movement.rolling: player.controller.is_action_triggered(PlayerActions.roll),
+		PlayerStates.Movement.idle: player.direction == 0,
 	}
-	
-func enter():
-	player.animation_controller.update_animation(PlayerAnimations.Walk)
+
+func get_animation_checks():
+	return {
+		PlayerAnimations.Walk: player.action_fsm.is_current_state("No_action")
+	}
 
 func update(_delta: float):
-	check_transitions()
+	update_animation()
+	
 
 func physics_update(delta: float):
 	update_physics(delta, player.speed)
+	check_transitions()

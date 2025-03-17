@@ -11,13 +11,14 @@ func _ready():
 
 func get_transition_checks():
 	return {
-		JUMPING: player.controller.is_action_triggered(PlayerActions.jump),
-		WALKING: player.direction != 0,
-		IDLE: true
+		PlayerStates.Movement.jumping: player.controller.is_action_triggered(PlayerActions.jump),
+		PlayerStates.Movement.walking: player.direction != 0,
+		PlayerStates.Movement.idle: true
 	}
 func can_enter():
 	return roll_cooldown.is_stopped()
 func enter():
+	player.action_fsm.set_blocked_states([PlayerStates.Action.attacking])
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
 func update(_delta: float):
@@ -38,4 +39,5 @@ func physics_update(delta: float):
 func exit():
 	player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, original_timescale)
 	roll_cooldown.start()
+	player.action_fsm.clear_blocked_states()
 	
