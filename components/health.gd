@@ -26,7 +26,6 @@ func get_is_alive():
 	return health>0
 
 func _ready():
-	if immortability_timer == null: immortability_timer = $Timer
 	if immortability_timer:
 		immortability_timer.one_shot = true
 		immortability_timer.autostart = false
@@ -44,7 +43,6 @@ func disable_immortability():
 
 func start_immortability_timer():
 	if !immortability_timer: 
-		print("Immortability timer is: ", immortability_timer)
 		return
 	immortability = true
 	immortability_timer.start()

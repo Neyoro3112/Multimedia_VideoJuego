@@ -4,13 +4,16 @@ extends Node
 
 ## Es el nodo de tipo AnimationTree que es controlado por la clase
 @export var tree: AnimationTree
-
+var flip_animations: Array[String] = []
 
 ## Es el AnimationPlayback usado por el AnimationTree
 var playback: AnimationNodeStateMachinePlayback
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var current_animation: String : get = get_current_animation
+
+func set_flip_animations(animations: Array[String]):
+	flip_animations = animations
 
 func get_current_animation():
 	return str(playback.get_current_node())
@@ -39,7 +42,7 @@ func randomize_animation(animation_name: String, number_choices: int):
 
 func update_side(facing_right: bool):
 	var animations_direction = 1 if facing_right else -1
-	for animation_name in PlayerAnimations.list:
+	for animation_name in flip_animations:
 
 		tree.set_deferred("parameters/%s/BlendSpace1D/blend_position" % animation_name, animations_direction)
 

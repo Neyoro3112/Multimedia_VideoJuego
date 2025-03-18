@@ -1,6 +1,8 @@
 class_name HitBox
 extends Area2D
 
+signal has_hit()
+
 ## Indica la cantidad de daño que causa esta hitbox
 @export var damage: int
 
@@ -22,4 +24,6 @@ func _on_area_entered(hurtbox: HurtBox) -> void:
 	if hurtbox == ownerHurtbox:
 		true_damage = round(damage * ownerHurtBoxMultiplier)
 	if hurtbox.is_in_group("EnemyBox") != is_in_group("EnemyBox"):
-		hurtbox.getHit(true_damage, self)
+		
+		if hurtbox.getHit(true_damage, self):
+			has_hit.emit()

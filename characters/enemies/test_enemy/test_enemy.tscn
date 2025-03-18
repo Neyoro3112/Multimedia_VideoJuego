@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cpbjmulbwq8mp"]
 
-[ext_resource type="Script" uid="uid://c42vvyk1scgwc" path="res://characters/enemies/enemy.gd" id="1_o0xbe"]
+[ext_resource type="Script" uid="uid://c42vvyk1scgwc" path="res://characters/enemies/test_enemy/test_enemy.gd" id="1_o0xbe"]
 [ext_resource type="Texture2D" uid="uid://bcxrihmhw3q38" path="res://assets/SpriteSheets/ZOMBIE_MEAT_COOKING.png" id="2_ge0uu"]
 [ext_resource type="Script" uid="uid://q857pellbhu7" path="res://components/health.gd" id="3_x0b21"]
 [ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="4_3vt6o"]

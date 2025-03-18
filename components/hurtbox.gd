@@ -13,9 +13,12 @@ func _ready():
 	
 	
 
-func getHit(dmg: int, hitbox: HitBox):
+func getHit(dmg: int, hitbox: HitBox) -> bool:
 	healthComponent.health -= dmg
 	if not healthComponent.immortability:	
 		healthComponent.start_immortability_timer()
 		
 		hit.emit(dmg, healthComponent, hitbox)
+		return true
+	return false
+	

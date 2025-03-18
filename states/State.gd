@@ -30,3 +30,13 @@ func check_transitions():
 			
 			transitioned.emit(state_name)
 			return
+			
+func get_animation_checks() -> Dictionary[String, bool]:
+	return {}
+
+func update_animation(start: bool = false):
+	var animation_checks = get_animation_checks()
+	for animation in animation_checks:
+		if animation_checks[animation]:
+			owner.animation_controller.update_animation(animation, start)
+			return

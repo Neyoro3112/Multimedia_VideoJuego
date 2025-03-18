@@ -1,28 +1,18 @@
-extends CharacterBody2D
+class_name Enemy
+extends Entity
 
-const SPEED = 60
+@export var controller: EnemyController : set = set_controller
+@export var detection_area: Area2D
+@export var max_speed = 150
+@export var max_att_speed = 150
+@export var chasing_acceleration = 25
+@export var attacking_acceleration = 100
 
-# Called when the node enters the scene tree for the first time.
-@onready var animation = $AnimationPlayer
-@onready var label = $HealthLabel
-@export var center_marker: Marker2D
-@export var distance_from_marker: int = 300
+var target: Entity
 
-func _ready() -> void:
-	animation.play()
-
-var direction = 1
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	if position.x <= center_marker.position.x - distance_from_marker: direction = 1
-	elif position.x >= center_marker.position.x + distance_from_marker: direction = -1
-	
-	animation.flip_h = direction == -1
-	
-	position.x += direction * SPEED * delta
-
-
-func _on_health_component_health_changed(_diff: int) -> void:
-	pass
+func set_controller(new_controller: EnemyController):
+	if controller: remove_child(controller)
+	controller = new_controller
+	if controller.get_parent() != self:
+		add_child(controller)
+	controller.enemy = self
