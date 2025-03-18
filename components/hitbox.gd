@@ -18,7 +18,6 @@ func _ready():
 
 func _on_area_entered(hurtbox: HurtBox) -> void:
 	if hurtbox == null: return
-	
 	var true_damage = damage
 	if hurtbox == ownerHurtbox:
 		true_damage = round(damage * ownerHurtBoxMultiplier)

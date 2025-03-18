@@ -3,5 +3,5 @@ extends BaseController
 
 var player: Player
 
-func is_action_held(action: StringName) -> bool:
+func is_action_held(_action: StringName) -> bool:
 	return false

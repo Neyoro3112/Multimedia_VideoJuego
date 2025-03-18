@@ -7,8 +7,9 @@ var knockback_direction: float
 var knockback_timer: Timer
 var velocity: float : get = get_knockback_velocity
 
-func get_knockback_velocity(): 
-	return knockback_direction * current_hitbox.knockbak
+func get_knockback_velocity() -> float:
+	
+	return knockback_direction * current_hitbox.knockbak if current_hitbox else 0.
 
 func _init(parent: Node, wait_time: float = 0.6):
 	# Crea un Timer como hijo del nodo padre (por ejemplo, el estado)
@@ -29,7 +30,7 @@ func apply_knockback(_delta: float, player: CharacterBody2D):
 	if knockback_timer.time_left > 0:
 		player.velocity.x = lerp(
 			0., 
-			knockback_direction * current_hitbox.knockbak, 
+			get_knockback_velocity(), 
 			knockback_timer.time_left / knockback_timer.wait_time
 		)
 	else:

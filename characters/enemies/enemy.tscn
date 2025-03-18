@@ -78,7 +78,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_3vt6o")
 
-[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerHurtbox") groups=["EnemyBox"]]
+[node name="EnemyHitBox" type="Area2D" parent="." node_paths=PackedStringArray("ownerHurtbox") groups=["EnemyBox"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_jlsa1")
@@ -87,7 +87,7 @@ knockbak = 200
 ownerHurtbox = NodePath("../HurtBox")
 metadata/_custom_type_script = "uid://dfdukj8kh40sl"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 position = Vector2(-2, 4.5)
 shape = SubResource("RectangleShape2D_dy7me")
 debug_color = Color(0.990077, 0, 0.282775, 0.42)

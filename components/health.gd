@@ -20,6 +20,11 @@ signal immortability_change(value: bool)
 ## Es la cantidad de vida actual del jugador
 @onready var health: int = max_health : set = set_health, get = get_health
 
+var is_alive: bool : get = get_is_alive
+
+func get_is_alive(): 
+	return health>0
+
 func _ready():
 	if immortability_timer == null: immortability_timer = $Timer
 	if immortability_timer:

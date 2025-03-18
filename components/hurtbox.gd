@@ -1,8 +1,7 @@
 class_name HurtBox
 extends Area2D
 
-signal hit(dmg: int, hitbox: HitBox)
-signal death(dmg: int, hitbox: HitBox)
+signal hit(dmg: int, healthComponent: HealthComponent, hitbox: HitBox)
 
 @export var healthComponent: HealthComponent
 
@@ -16,12 +15,7 @@ func _ready():
 
 func getHit(dmg: int, hitbox: HitBox):
 	healthComponent.health -= dmg
-	if not healthComponent.immortability:
-		if healthComponent.health == 0:
-			healthComponent.immortability = true
-			death.emit(dmg, hitbox)
-			return
-		
+	if not healthComponent.immortability:	
 		healthComponent.start_immortability_timer()
 		
-		hit.emit(dmg, hitbox)
+		hit.emit(dmg, healthComponent, hitbox)

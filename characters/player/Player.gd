@@ -2,15 +2,13 @@ extends Entity
 class_name Player
 
 @export var jump_speed = 300
-@export var attack_speed = 100
 @export var roll_speed = 520.
-
 
 @export var controller: PlayerController : set = set_controller
 
 @onready var rollBlockinCeiling: RayCast2D = $RollCeilingRaycast
-
-
+@onready var movement_fsm: StateMachine = $MovementFSM
+@onready var action_fsm: StateMachine = $ActionFSM
 
 func _ready():
 	animation_controller.update_side(facing_right)
