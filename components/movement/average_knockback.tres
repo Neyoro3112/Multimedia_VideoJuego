@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="KnockbackMovement" load_steps=2 format=3 uid="uid://dbxflqutw8dss"]
+
+[ext_resource type="Script" uid="uid://chifhhp1npv8y" path="res://components/movement/knockback_movement.gd" id="1_xqdvq"]
+
+[resource]
+script = ExtResource("1_xqdvq")
+duration = 0.4
+do_apply_gravity = true
+metadata/_custom_type_script = "uid://chifhhp1npv8y"
