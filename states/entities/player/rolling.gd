@@ -3,6 +3,8 @@ class_name PlayerRolling
 
 @onready var timer = $RollDuration
 @onready var roll_cooldown = $RollCooldownTimer
+@export var rolling_movement: RollingMovement
+
 
 var original_timescale: float
 
@@ -18,6 +20,7 @@ func get_transition_checks():
 func can_enter():
 	return roll_cooldown.is_stopped()
 func enter():
+	player.movement_component = rolling_movement
 	player.action_fsm.set_blocked_states([PlayerStates.Action.attacking])
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Roll)
@@ -25,17 +28,11 @@ func update(_delta: float):
 	if timer.is_stopped():
 		player.animation_controller.update_animation(PlayerAnimations.Crouch)
 func physics_update(delta: float):
-	update_physics(delta, 0, func():
-		var roll_progress = timer.time_left / timer.wait_time
-		player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.4, original_timescale, roll_progress))
-		var speed = lerp(player.roll_speed * 0.08, player.roll_speed, roll_progress)
-		player.velocity.x = speed * (player.direction if timer.is_stopped() else (1 if player.facing_right else -1))
-	)
+	rolling_movement.progress = timer.time_left / timer.wait_time
+	player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, lerp(original_timescale*0.4, original_timescale, rolling_movement.progress))
+	player.update_physics(delta)	
 	if timer.is_stopped() and not player.rollBlockinCeiling.is_colliding() and player.is_on_floor():
 		check_transitions()
-	
-	
-
 func exit():
 	player.animation_controller.change_animation_timescale(PlayerAnimations.Roll, original_timescale)
 	roll_cooldown.start()

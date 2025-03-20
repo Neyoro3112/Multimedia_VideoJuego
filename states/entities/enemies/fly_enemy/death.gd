@@ -1,10 +1,8 @@
 extends EnemyState
 
-var knockback_handler: KnockbackHandler
+@export var knockback_movement: KnockbackMovement
 @onready var free_timer: Timer = $FreeTimer
 
-func _ready():
-	knockback_handler = KnockbackHandler.new(self, 0.4)
 
 func get_transition_checks():
 	return {
@@ -18,17 +16,14 @@ func get_animation_checks():
 	}
 
 func enter():
-	enemy.direction = -knockback_handler.knockback_direction
-	enemy.velocity.y = -abs(knockback_handler.velocity)
-	knockback_handler.start_knockback()
+	enemy.movement_component = knockback_movement
+	knockback_movement.init(enemy)
 
 func update(_delta: float):
 	update_animation()
 	
 func physics_update(_delta: float):
-	knockback_handler.apply_knockback(_delta, enemy)
-	enemy.apply_gravity(_delta)
-	enemy.move_and_slide()
+	enemy.update_physics(_delta)
 	if enemy.is_on_floor() and free_timer.is_stopped():
 		free_timer.start()
 		
@@ -38,7 +33,7 @@ func exit():
 
 func _on_hurt_box_hit(_dmg: int, healthComponent: HealthComponent, hitbox: HitBox) -> void:
 	if healthComponent.is_alive: return
-	knockback_handler.setup_knockback(hitbox, enemy.global_position)
+	knockback_movement.setup_knockback(hitbox, enemy)
 	transitioned.emit(EnemyStates.Actions.Death)
 
 

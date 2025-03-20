@@ -1,6 +1,8 @@
 extends PlayerState
 class_name PlayerFalling
 
+@export var ground_movement_component: GroundMovement
+
 func get_transition_checks():
 	return {
 		PlayerStates.Movement.walking: player.direction != 0,
@@ -14,10 +16,11 @@ func get_animation_checks():
 
 
 func enter():
+	player.movement_component = ground_movement_component
 	update_animation()
 
 func physics_update(delta: float):
-	update_physics(delta, player.speed)
+	player.update_physics(delta)
 
 	if player.is_on_floor():
 		check_transitions()

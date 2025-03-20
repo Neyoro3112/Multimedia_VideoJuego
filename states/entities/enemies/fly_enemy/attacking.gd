@@ -3,6 +3,7 @@ extends EnemyState
 var has_hit: bool
 @onready var cooldown_timer: Timer = $cooldownTimer
 @onready var attacking_span: Timer = $AttackingSpan
+@export var fly_movement: FlyMovementComponent
 
 func get_transition_checks():
 	return {
@@ -20,16 +21,13 @@ func can_enter():
 func enter():
 	update_animation()
 	attacking_span.start()
+	enemy.movement_component = fly_movement
 	
-func physics_update(_delta: float):
+	
+func physics_update(delta: float):
 	if not enemy.target: return
-	
-	var movement_direction: Vector2 = enemy.position.direction_to(enemy.target.position)
-	enemy.direction = clampi(round(movement_direction.x), -1, 1)
-	
-	enemy.velocity += movement_direction * enemy.attacking_acceleration * _delta
-	enemy.velocity = enemy.velocity.limit_length(enemy.max_att_speed)
-	enemy.move_and_slide()
+	fly_movement.target_point = enemy.target.global_position
+	enemy.update_physics(delta)
 	check_transitions()
 func exit():
 	has_hit = false

@@ -20,6 +20,6 @@ func update(_delta: float):
 
 
 func physics_update(_delta: float):
-	update_physics(_delta)
+	#update_physics(_delta)
 	check_transitions()
 	

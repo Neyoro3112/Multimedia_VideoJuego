@@ -14,7 +14,6 @@ func can_enter():
 	return cooldown_timer.is_stopped()
 
 func enter():
-	player.speed_multiplier = 0.5
 	player.movement_fsm.set_blocked_states([PlayerStates.Movement.jumping, PlayerStates.Movement.rolling])
 	player.animation_controller.randomize_animation(PlayerAnimations.Attack, 3)
 	player.animation_controller.update_animation(PlayerAnimations.Attack, true)
@@ -24,6 +23,5 @@ func physics_update(_delta: float):
 		check_transitions()	
 
 func exit():
-	player.speed_multiplier = 1
 	cooldown_timer.start()
 	player.movement_fsm.clear_blocked_states()

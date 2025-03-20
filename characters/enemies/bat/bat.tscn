@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://uhne2tr2osp"]
+[gd_scene load_steps=95 format=3 uid="uid://uhne2tr2osp"]
 
 [ext_resource type="Script" uid="uid://bvfm0o5gw6av3" path="res://characters/enemies/bat/bat.gd" id="1_5b8vu"]
 [ext_resource type="Script" uid="uid://cas7q7fsfjyhw" path="res://characters/enemies/enemy_controller.gd" id="2_87tbl"]
@@ -12,8 +12,11 @@
 [ext_resource type="Script" uid="uid://c2m7w6rhyblev" path="res://states/entities/enemies/fly_enemy/chasing.gd" id="10_5tef2"]
 [ext_resource type="Script" uid="uid://bl8rrtlq2fev0" path="res://states/entities/enemies/fly_enemy/spotting.gd" id="10_a6x2a"]
 [ext_resource type="Script" uid="uid://b17ifewaoqyee" path="res://states/entities/enemies/fly_enemy/hit.gd" id="11_1rjn6"]
+[ext_resource type="Script" uid="uid://cdfaf64yrhqv4" path="res://components/movement/fly_movement.gd" id="11_4n8rd"]
+[ext_resource type="Script" uid="uid://chifhhp1npv8y" path="res://components/movement/knockback_movement.gd" id="13_5nwb1"]
 [ext_resource type="Script" uid="uid://c3q7uc7cta42k" path="res://states/entities/enemies/fly_enemy/attacking.gd" id="13_57kkp"]
 [ext_resource type="Script" uid="uid://va5p31okrhva" path="res://states/entities/enemies/fly_enemy/death.gd" id="14_h6sni"]
+[ext_resource type="Resource" uid="uid://dbxflqutw8dss" path="res://components/movement/average_knockback.tres" id="16_636rh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xr3g"]
 atlas = ExtResource("2_ixkiu")
@@ -643,6 +646,25 @@ states/spotted/node = SubResource("AnimationNodeBlendTree_8todr")
 states/spotted/position = Vector2(38, 243)
 graph_offset = Vector2(-363, 39)
 
+[sub_resource type="Resource" id="Resource_mtq6h"]
+script = ExtResource("11_4n8rd")
+chasing_acceleration = 400.0
+max_speed = 175.0
+metadata/_custom_type_script = "uid://cdfaf64yrhqv4"
+
+[sub_resource type="Resource" id="Resource_636rh"]
+script = ExtResource("13_5nwb1")
+duration = 0.4
+do_apply_gravity = false
+vertical_mutliplier = 0.0
+metadata/_custom_type_script = "uid://chifhhp1npv8y"
+
+[sub_resource type="Resource" id="Resource_4n8rd"]
+script = ExtResource("11_4n8rd")
+chasing_acceleration = 1000.0
+max_speed = 350.0
+metadata/_custom_type_script = "uid://cdfaf64yrhqv4"
+
 [node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "animation_controller")]
 collision_layer = 0
 wall_min_slide_angle = 0.785398
@@ -663,6 +685,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
+[node name="Controller" type="Node" parent="."]
+script = ExtResource("2_87tbl")
+
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
 script = ExtResource("2_r36bf")
 immortability_timer = NodePath("Timer")
@@ -671,9 +696,6 @@ metadata/_custom_type_script = "uid://q857pellbhu7"
 
 [node name="Timer" type="Timer" parent="HealthComponent"]
 wait_time = 0.1
-
-[node name="Controller" type="Node" parent="."]
-script = ExtResource("2_87tbl")
 
 [node name="Facing" type="Node2D" parent="."]
 
@@ -762,6 +784,7 @@ script = ExtResource("7_lt762")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("10_5tef2")
+fly_movement = SubResource("Resource_mtq6h")
 
 [node name="RandomPointTimer" type="Timer" parent="StateMachine/Chasing"]
 wait_time = 0.3
@@ -775,9 +798,11 @@ one_shot = true
 
 [node name="Hit" type="Node" parent="StateMachine"]
 script = ExtResource("11_1rjn6")
+knockback_movement = SubResource("Resource_636rh")
 
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("13_57kkp")
+fly_movement = SubResource("Resource_4n8rd")
 
 [node name="cooldownTimer" type="Timer" parent="StateMachine/Attacking"]
 wait_time = 3.0
@@ -789,6 +814,7 @@ one_shot = true
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("14_h6sni")
+knockback_movement = ExtResource("16_636rh")
 
 [node name="FreeTimer" type="Timer" parent="StateMachine/Death"]
 wait_time = 0.4

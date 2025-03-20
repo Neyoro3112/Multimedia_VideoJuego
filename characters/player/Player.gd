@@ -2,7 +2,6 @@ extends Entity
 class_name Player
 
 @export var jump_speed = 300
-@export var roll_speed = 520.
 
 @export var controller: PlayerController : set = set_controller
 

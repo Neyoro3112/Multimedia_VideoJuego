@@ -6,7 +6,16 @@ extends CharacterBody2D
 @export var locked_side: bool = false
 @export var speed = 160
 @export var gravity = 1800
-@export var movement_component: MovementComponent
+@export var movement_component: MovementComponent : set = set_movement_component
+var last_movement_component: MovementComponent
+
+func set_movement_component(value: MovementComponent):
+	last_movement_component = movement_component
+	movement_component = value
+
+func revert_movement_component():
+	movement_component = last_movement_component
+
 
 var direction = 0 : set = set_direction
 

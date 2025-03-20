@@ -1,9 +1,7 @@
 extends EnemyState
 
-var knockback_handler: KnockbackHandler
+@export var knockback_movement: KnockbackMovement
 
-func _ready():
-	knockback_handler = KnockbackHandler.new(self, 0.4)
 
 func get_transition_checks():
 	return {
@@ -18,20 +16,18 @@ func get_animation_checks():
 
 func enter():
 	update_animation(true)
-	enemy.velocity = Vector2.ZERO
-	enemy.direction = -knockback_handler.knockback_direction
-	knockback_handler.start_knockback()
+	enemy.movement_component = knockback_movement
+	knockback_movement.init(enemy)
+	#enemy.velocity = Vector2.ZERO
 
 	
 func physics_update(_delta: float):
-	knockback_handler.apply_knockback(_delta, enemy)
-	enemy.move_and_slide()
+	enemy.update_physics(_delta)
 	if enemy.velocity.x == 0:
 		check_transitions()
-		
 
 
 func _on_hurt_box_hit(_dmg: int, _healthComponent: HealthComponent, hitbox: HitBox) -> void:
 	if not _healthComponent.is_alive: return
-	knockback_handler.setup_knockback(hitbox, enemy.global_position)
+	knockback_movement.setup_knockback(hitbox, enemy)
 	transitioned.emit(EnemyStates.Actions.Hit)

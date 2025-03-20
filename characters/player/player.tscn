@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=180 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_7b6hw"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -22,10 +22,13 @@
 [ext_resource type="Script" uid="uid://b675r5s3te6jd" path="res://states/entities/player/attacking.gd" id="16_ey80i"]
 [ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/animations/animation_controller.gd" id="17_fftny"]
 [ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="19_kyfeq"]
+[ext_resource type="Resource" uid="uid://c5d1reux15qb8" path="res://characters/player/player_common_movement.tres" id="19_w53g3"]
 [ext_resource type="Script" uid="uid://cmqtbowdq6gcm" path="res://states/entities/player/hit.gd" id="20_yybc7"]
 [ext_resource type="Script" uid="uid://db25enbpm8hmk" path="res://states/entities/player/no_action.gd" id="22_4cx7u"]
+[ext_resource type="Script" uid="uid://fg41ex266bts" path="res://components/movement/rolling_movement.gd" id="23_e0pgg"]
 [ext_resource type="Script" uid="uid://cliqy0kjy03ec" path="res://states/entities/player/death.gd" id="23_jgd8i"]
 [ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://characters/player/human_actions_controller.gd" id="26_4cx7u"]
+[ext_resource type="Resource" uid="uid://dbxflqutw8dss" path="res://components/movement/average_knockback.tres" id="26_sbttr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f2pv"]
 atlas = ExtResource("2_mckqi")
@@ -1780,10 +1783,14 @@ states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
 graph_offset = Vector2(-179.127, 1.2746)
 
+[sub_resource type="Resource" id="Resource_sbttr"]
+script = ExtResource("23_e0pgg")
+roll_speed = 490.0
+metadata/_custom_type_script = "uid://fg41ex266bts"
+
 [node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("controller", "animation_controller")]
 collision_layer = 32
 script = ExtResource("1_7b6hw")
-roll_speed = 490.0
 controller = NodePath("HumanActionsController")
 animation_controller = NodePath("AnimationController")
 speed = 180
@@ -1832,7 +1839,7 @@ shape = SubResource("RectangleShape2D_iwa0u")
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
 script = ExtResource("8_fs3de")
 immortability_timer = NodePath("Timer")
-max_health = 22
+max_health = 20
 
 [node name="Timer" type="Timer" parent="Health"]
 wait_time = 0.8
@@ -1897,9 +1904,11 @@ script = ExtResource("10_dlvnl")
 
 [node name="Walking" type="Node" parent="MovementFSM"]
 script = ExtResource("11_b5p54")
+ground_movement_component = ExtResource("19_w53g3")
 
 [node name="Jumping" type="Node" parent="MovementFSM"]
 script = ExtResource("12_x4e6t")
+ground_movement_component = ExtResource("19_w53g3")
 
 [node name="JumpExtendDuration" type="Timer" parent="MovementFSM/Jumping"]
 wait_time = 0.3
@@ -1907,9 +1916,11 @@ one_shot = true
 
 [node name="Falling" type="Node" parent="MovementFSM"]
 script = ExtResource("13_uo411")
+ground_movement_component = ExtResource("19_w53g3")
 
 [node name="Rolling" type="Node" parent="MovementFSM"]
 script = ExtResource("14_uusi3")
+rolling_movement = SubResource("Resource_sbttr")
 
 [node name="RollDuration" type="Timer" parent="MovementFSM/Rolling"]
 wait_time = 0.7
@@ -1929,9 +1940,11 @@ script = ExtResource("22_4cx7u")
 
 [node name="Hit" type="Node" parent="ActionFSM"]
 script = ExtResource("20_yybc7")
+knockback_movement_component = ExtResource("26_sbttr")
 
 [node name="Death" type="Node" parent="ActionFSM"]
 script = ExtResource("23_jgd8i")
+knockback_movement_component = ExtResource("26_sbttr")
 
 [node name="Attacking" type="Node" parent="ActionFSM"]
 script = ExtResource("16_ey80i")
