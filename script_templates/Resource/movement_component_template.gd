@@ -1,5 +1,8 @@
 extends MovementComponent
 
+func init(_entity: Entity):
+	pass
+
 func update_movement(_delta: float, _entity: Entity) -> void:
 	pass
 
