@@ -1,7 +1,6 @@
 extends PlayerState
 
-# meta-name: Player state template
-# meta-default: true
+
 
 func get_transition_checks():
 	return {

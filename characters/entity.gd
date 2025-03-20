@@ -5,16 +5,18 @@ extends CharacterBody2D
 @export var facing_right = true
 @export var locked_side: bool = false
 @export var speed = 160
-@export var speed_multiplier: float = 1
 @export var gravity = 1800
+@export var movement_component: MovementComponent
+
 var direction = 0 : set = set_direction
+
+func update_physics(_delta: float):
+	if not movement_component: return
+	movement_component.update_movement(_delta, self)
+	move_and_slide()
 
 func set_locked_side(value: bool):
 	locked_side = value
-func move(movement_speed: float = speed):
-	velocity.x = direction * movement_speed * speed_multiplier
-func apply_gravity(delta: float):
-	velocity.y += gravity * delta
 func set_direction(new_direction: int):
 	direction = clampi(new_direction, -1, 1)
 	check_direction()
