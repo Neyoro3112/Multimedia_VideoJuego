@@ -8,6 +8,8 @@ extends Entity
 @export var chasing_acceleration = 25
 @export var attacking_acceleration = 100
 
+@export var contact_hitbox: HitBox
+
 var target: Entity
 
 func set_controller(new_controller: EnemyController):

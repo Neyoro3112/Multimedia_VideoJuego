@@ -16,6 +16,7 @@ func get_animation_checks():
 	}
 
 func enter():
+	enemy.contact_hitbox.active = false
 	enemy.movement_component = knockback_movement
 	knockback_movement.init(enemy)
 

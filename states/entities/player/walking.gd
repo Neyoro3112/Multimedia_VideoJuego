@@ -24,6 +24,7 @@ func update(_delta: float):
 	
 
 func physics_update(delta: float):
+	ground_movement_component.speed_multiplier = 0.5 if player.action_fsm.is_current_state(PlayerStates.Action.attacking) else 1.
 	player.update_physics(delta)
 	check_transitions()
 	

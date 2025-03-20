@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://danj3d1wvyojl" path="res://assets/SpriteSheets/enemies/fly_enemy.png" id="2_ixkiu"]
 [ext_resource type="Script" uid="uid://q857pellbhu7" path="res://components/health.gd" id="2_r36bf"]
 [ext_resource type="Script" uid="uid://bxutyjd252rd6" path="res://components/hurtbox.gd" id="3_7xr3g"]
-[ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/animations/animation_controller.gd" id="3_26c4s"]
+[ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="3_26c4s"]
 [ext_resource type="Script" uid="uid://dfdukj8kh40sl" path="res://components/hitbox.gd" id="4_lt762"]
 [ext_resource type="Script" uid="uid://bqse0wc4xas8m" path="res://states/entities/enemies/fly_enemy/idle.gd" id="7_lt762"]
 [ext_resource type="Script" uid="uid://bjpp2ia82u6tg" path="res://states/StateMachine.gd" id="8_r36bf"]
@@ -665,7 +665,7 @@ chasing_acceleration = 1000.0
 max_speed = 350.0
 metadata/_custom_type_script = "uid://cdfaf64yrhqv4"
 
-[node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "animation_controller")]
+[node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "contact_hitbox", "animation_controller", "hurtbox")]
 collision_layer = 0
 wall_min_slide_angle = 0.785398
 platform_floor_layers = 4294967041
@@ -677,8 +677,10 @@ max_speed = 175
 max_att_speed = 350
 chasing_acceleration = 400
 attacking_acceleration = 400
+contact_hitbox = NodePath("HitBox")
 animation_controller = NodePath("AnimationController")
 speed = 100
+hurtbox = NodePath("HurtBox")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

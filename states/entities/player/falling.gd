@@ -17,6 +17,7 @@ func get_animation_checks():
 
 func enter():
 	player.movement_component = ground_movement_component
+func update(_delta: float):
 	update_animation()
 
 func physics_update(delta: float):

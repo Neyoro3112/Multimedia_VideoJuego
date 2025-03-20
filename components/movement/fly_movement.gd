@@ -12,7 +12,6 @@ func update_movement(_delta: float, enemy: Entity) -> void:
 		return
 	# Calcula la dirección hacia el punto objetivo
 	var movement_direction: Vector2 = enemy.position.direction_to(target_point)
-	print("Acc: ", chasing_acceleration * _delta)
 	enemy.velocity += movement_direction * chasing_acceleration * _delta
 	enemy.velocity = enemy.velocity.limit_length(max_speed)
 	enemy.direction = sign(enemy.velocity.x)

@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var speed = 160
 @export var gravity = 1800
 @export var movement_component: MovementComponent : set = set_movement_component
+
+@export var hurtbox: HurtBox
+
 var last_movement_component: MovementComponent
 
 func set_movement_component(value: MovementComponent):

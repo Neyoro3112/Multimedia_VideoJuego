@@ -15,6 +15,11 @@ signal has_hit()
 ## Indica el porcentaje del daño que puede hacer el ataque a su propio creador si lo puede tocar.
 @export var ownerHurtBoxMultiplier: float = 0
 
+@export var active: bool = true :
+	set(value):
+		active = value
+		set_deferred("monitoring", value)
+
 func _ready():
 	area_entered.connect(_on_area_entered)
 

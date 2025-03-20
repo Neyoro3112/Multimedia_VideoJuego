@@ -2,12 +2,12 @@ extends PlayerState
 class_name PlayerJumping
 
 @onready var timer = $JumpExtendDuration
-@export var ground_movement_component: GroundMovement
+@export var jumping_movement_component: JumpingMovement
 
 
 func enter():
-	player.movement_component = ground_movement_component
-	player.velocity.y = -player.jump_speed
+	player.movement_component = jumping_movement_component
+	jumping_movement_component.init(player)
 	timer.start()
 	player.animation_controller.update_animation(PlayerAnimations.Jump)
 	
@@ -18,14 +18,10 @@ func get_transition_checks():
 
 	
 func physics_update(delta: float):
-	var is_holding_jump = player.controller.is_action_held(PlayerActions.jump)
 	# Mientras el botón de salto esté presionado, permite extender el salto
-	if is_holding_jump and not timer.is_stopped():
-		player.velocity.y = -player.jump_speed
-	else:
-		timer.stop()
+	jumping_movement_component.extend_jump = player.controller.is_action_held(PlayerActions.jump) and not timer.is_stopped()
+	if not jumping_movement_component.extend_jump: timer.stop()
 	player.update_physics(delta)
-
 	check_transitions()
 
 func exit():

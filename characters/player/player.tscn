@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=182 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_7b6hw"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -20,10 +20,11 @@
 [ext_resource type="Script" uid="uid://dji42vh7cvsfg" path="res://states/entities/player/rolling.gd" id="14_uusi3"]
 [ext_resource type="Script" uid="uid://bjpp2ia82u6tg" path="res://states/StateMachine.gd" id="16_4cx7u"]
 [ext_resource type="Script" uid="uid://b675r5s3te6jd" path="res://states/entities/player/attacking.gd" id="16_ey80i"]
-[ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/animations/animation_controller.gd" id="17_fftny"]
+[ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="17_fftny"]
 [ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="19_kyfeq"]
 [ext_resource type="Resource" uid="uid://c5d1reux15qb8" path="res://characters/player/player_common_movement.tres" id="19_w53g3"]
 [ext_resource type="Script" uid="uid://cmqtbowdq6gcm" path="res://states/entities/player/hit.gd" id="20_yybc7"]
+[ext_resource type="Script" uid="uid://dpb522fi82w88" path="res://components/movement/jumping_movement.gd" id="21_6pj1p"]
 [ext_resource type="Script" uid="uid://db25enbpm8hmk" path="res://states/entities/player/no_action.gd" id="22_4cx7u"]
 [ext_resource type="Script" uid="uid://fg41ex266bts" path="res://components/movement/rolling_movement.gd" id="23_e0pgg"]
 [ext_resource type="Script" uid="uid://cliqy0kjy03ec" path="res://states/entities/player/death.gd" id="23_jgd8i"]
@@ -1783,17 +1784,25 @@ states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
 graph_offset = Vector2(-179.127, 1.2746)
 
+[sub_resource type="Resource" id="Resource_3a7m8"]
+script = ExtResource("21_6pj1p")
+jump_force = 300.0
+extend_jump = false
+speed_multiplier = 1
+metadata/_custom_type_script = "uid://dpb522fi82w88"
+
 [sub_resource type="Resource" id="Resource_sbttr"]
 script = ExtResource("23_e0pgg")
 roll_speed = 490.0
 metadata/_custom_type_script = "uid://fg41ex266bts"
 
-[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("controller", "animation_controller")]
+[node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("controller", "animation_controller", "hurtbox")]
 collision_layer = 32
 script = ExtResource("1_7b6hw")
 controller = NodePath("HumanActionsController")
 animation_controller = NodePath("AnimationController")
 speed = 180
+hurtbox = NodePath("HurtBox")
 
 [node name="HumanActionsController" type="Node" parent="."]
 script = ExtResource("26_4cx7u")
@@ -1804,7 +1813,7 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
-animation = &"death"
+animation = &"jump"
 
 [node name="AttackArea" type="Area2D" parent="Facing" node_paths=PackedStringArray("ownerHurtbox")]
 collision_layer = 4
@@ -1819,6 +1828,14 @@ position = Vector2(20, 4.667)
 shape = SubResource("RectangleShape2D_u4cjm")
 disabled = true
 debug_color = Color(0.972647, 0, 0.439581, 0.42)
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
+script = ExtResource("8_fs3de")
+immortability_timer = NodePath("Timer")
+max_health = 20
+
+[node name="Timer" type="Timer" parent="Health"]
+wait_time = 0.8
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
 collision_layer = 2
@@ -1835,14 +1852,6 @@ debug_color = Color(0.926992, 0.690053, 1.15514e-06, 0.42)
 [node name="WorldCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_iwa0u")
-
-[node name="Health" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
-script = ExtResource("8_fs3de")
-immortability_timer = NodePath("Timer")
-max_health = 20
-
-[node name="Timer" type="Timer" parent="Health"]
-wait_time = 0.8
 
 [node name="RollCeilingRaycast" type="RayCast2D" parent="."]
 position = Vector2(0, 16.6667)
@@ -1908,7 +1917,7 @@ ground_movement_component = ExtResource("19_w53g3")
 
 [node name="Jumping" type="Node" parent="MovementFSM"]
 script = ExtResource("12_x4e6t")
-ground_movement_component = ExtResource("19_w53g3")
+jumping_movement_component = SubResource("Resource_3a7m8")
 
 [node name="JumpExtendDuration" type="Timer" parent="MovementFSM/Jumping"]
 wait_time = 0.3
@@ -1950,7 +1959,7 @@ knockback_movement_component = ExtResource("26_sbttr")
 script = ExtResource("16_ey80i")
 
 [node name="AttackDuration" type="Timer" parent="ActionFSM/Attacking"]
-wait_time = 0.3
+wait_time = 0.25
 one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="ActionFSM/Attacking"]
@@ -1967,6 +1976,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("19_kyfeq")
 
+[connection signal="health_changed" from="Health" to="HealthLabel" method="_on_health_health_changed"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Hit" method="_on_hurt_box_hit"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Death" method="_on_hurt_box_hit"]
-[connection signal="health_changed" from="Health" to="HealthLabel" method="_on_health_health_changed"]
