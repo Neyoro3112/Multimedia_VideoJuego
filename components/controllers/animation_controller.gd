@@ -16,7 +16,8 @@ func set_flip_animations(animations: Array[String]):
 	flip_animations = animations
 
 func get_current_animation():
-	return str(playback.get_current_node())
+	var current_node = playback.get_current_node()
+	return str(current_node)
 
 
 func _ready():
@@ -43,7 +44,7 @@ func randomize_animation(animation_name: String, number_choices: int):
 func update_side(facing_right: bool):
 	var animations_direction = 1 if facing_right else -1
 	for animation_name in flip_animations:
-
+		
 		tree.set_deferred("parameters/%s/BlendSpace1D/blend_position" % animation_name, animations_direction)
 
 func get_animation_timescale(animation: String) -> float :

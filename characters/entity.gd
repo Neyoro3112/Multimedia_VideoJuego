@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var animation_controller: AnimationController
 @export var facing_right = true
 @export var locked_side: bool = false
-@export var speed = 160
 @export var gravity = 1800
 @export var movement_component: MovementComponent : set = set_movement_component
 

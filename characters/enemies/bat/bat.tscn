@@ -644,7 +644,7 @@ states/idle/node = SubResource("AnimationNodeBlendTree_u4i8u")
 states/idle/position = Vector2(-115, 201)
 states/spotted/node = SubResource("AnimationNodeBlendTree_8todr")
 states/spotted/position = Vector2(38, 243)
-graph_offset = Vector2(-363, 39)
+graph_offset = Vector2(-563, 55)
 
 [sub_resource type="Resource" id="Resource_mtq6h"]
 script = ExtResource("11_4n8rd")
@@ -673,13 +673,8 @@ safe_margin = 0.18
 script = ExtResource("1_5b8vu")
 controller = NodePath("Controller")
 detection_area = NodePath("DetectionArea")
-max_speed = 175
-max_att_speed = 350
-chasing_acceleration = 400
-attacking_acceleration = 400
 contact_hitbox = NodePath("HitBox")
 animation_controller = NodePath("AnimationController")
-speed = 100
 hurtbox = NodePath("HurtBox")
 
 [node name="Label" type="Label" parent="."]

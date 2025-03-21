@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=176 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_7b6hw"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -1460,7 +1460,7 @@ max_space = 2.0
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8u58b"]
-graph_offset = Vector2(-779.545, -87.9291)
+graph_offset = Vector2(-682.545, -34.9291)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_cfd5l")
 nodes/Add2/position = Vector2(-100, 80)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_1w3y8")
@@ -1492,7 +1492,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_y3et5"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0mbv2"]
-graph_offset = Vector2(-505.915, 61.9367)
+graph_offset = Vector2(-972.915, -155.063)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_4cx7u")
 nodes/Add2/position = Vector2(-220, 20)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_e0pgg")
@@ -1524,7 +1524,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jepfe"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iopkm"]
-graph_offset = Vector2(-592.976, 24.6997)
+graph_offset = Vector2(-724.231, -56.5323)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_e0pgg")
 nodes/Add2/position = Vector2(-100, 100)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3a7m8")
@@ -1589,7 +1589,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_e0pgg"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sbttr"]
-graph_offset = Vector2(-658.265, 127.604)
+graph_offset = Vector2(-746.265, -38.396)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_lv4bx")
 nodes/Add2/position = Vector2(-120, 80)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jgd8i")
@@ -1621,7 +1621,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_groj6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cc0c0"]
-graph_offset = Vector2(-569.23, 2.41425)
+graph_offset = Vector2(-682.938, -6.27112)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_d0m3r")
 nodes/Add2/position = Vector2(-40, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_w53g3")
@@ -1653,7 +1653,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jwadv"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4jwsb"]
-graph_offset = Vector2(-680, 82)
+graph_offset = Vector2(-721.2, 15.5)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_vjv6s")
 nodes/Add2/position = Vector2(-140, 40)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_ak527")
@@ -1685,7 +1685,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1yrvd"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4i74t"]
-graph_offset = Vector2(-1369, 88)
+graph_offset = Vector2(-1049, -63)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_cj8vd")
 nodes/Add2/position = Vector2(-364.1, 94.6)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_mhxjs")
@@ -1694,38 +1694,6 @@ nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_ovolg")
 nodes/BlendSpace1D/position = Vector2(-700, 180)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1yrvd")
 nodes/TimeScale/position = Vector2(-14.3, 119.9)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"BlendSpace1D", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_j5m1k"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5eay5"]
-animation = &"move"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8oqua"]
-animation = &"scale_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mqrs8"]
-animation = &"scale_right"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ax0v6"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_8oqua")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_mqrs8")
-blend_point_1/pos = 1.0
-blend_mode = 1
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_n8cpq"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cohsp"]
-graph_offset = Vector2(-789.984, 231.394)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_j5m1k")
-nodes/Add2/position = Vector2(-89.1, 173.8)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_5eay5")
-nodes/Animation/position = Vector2(-400, 40)
-nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_ax0v6")
-nodes/BlendSpace1D/position = Vector2(-398.2, 333.3)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_n8cpq")
-nodes/TimeScale/position = Vector2(120, 180)
 node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"BlendSpace1D", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_wbyto"]
@@ -1749,7 +1717,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_bi087"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c4i46"]
-graph_offset = Vector2(-733.221, 64.2381)
+graph_offset = Vector2(-670.221, -31.7619)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_wbyto")
 nodes/Add2/position = Vector2(-95.7, 170.5)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_bgq01")
@@ -1759,6 +1727,9 @@ nodes/BlendSpace1D/position = Vector2(-380, 280)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_bi087")
 nodes/TimeScale/position = Vector2(80, 160)
 node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"BlendSpace1D", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6pj1p"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kcxbi"]
 states/Start/position = Vector2(344, 0)
@@ -1778,17 +1749,17 @@ states/jump/node = SubResource("AnimationNodeBlendTree_4jwsb")
 states/jump/position = Vector2(300, 298.275)
 states/roll/node = SubResource("AnimationNodeBlendTree_4i74t")
 states/roll/position = Vector2(432, 271.275)
-states/run/node = SubResource("AnimationNodeBlendTree_cohsp")
-states/run/position = Vector2(378, 201.275)
 states/walk/node = SubResource("AnimationNodeBlendTree_c4i46")
 states/walk/position = Vector2(221, 197.275)
-graph_offset = Vector2(-179.127, 1.2746)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_6pj1p")]
+graph_offset = Vector2(-157.127, -47.7254)
 
 [sub_resource type="Resource" id="Resource_3a7m8"]
 script = ExtResource("21_6pj1p")
 jump_force = 300.0
 extend_jump = false
-speed_multiplier = 1
+speed_multiplier = 1.0
+speed = 160.0
 metadata/_custom_type_script = "uid://dpb522fi82w88"
 
 [sub_resource type="Resource" id="Resource_sbttr"]
@@ -1801,7 +1772,6 @@ collision_layer = 32
 script = ExtResource("1_7b6hw")
 controller = NodePath("HumanActionsController")
 animation_controller = NodePath("AnimationController")
-speed = 180
 hurtbox = NodePath("HurtBox")
 
 [node name="HumanActionsController" type="Node" parent="."]
@@ -1813,7 +1783,8 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
-animation = &"jump"
+animation = &"idle"
+frame = 3
 
 [node name="AttackArea" type="Area2D" parent="Facing" node_paths=PackedStringArray("ownerHurtbox")]
 collision_layer = 4
@@ -1868,14 +1839,13 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationController"]
-active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_kcxbi")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/Add2/add_amount = 1.0
 parameters/attack/BlendSpace1D/blend_position = 0
 parameters/attack/TimeScale/scale = 3.0
-parameters/attack/randomizer/blend_position = -0.99403
+parameters/attack/randomizer/blend_position = 0.999248
 parameters/crouch/Add2/add_amount = 1.0
 parameters/crouch/BlendSpace1D/blend_position = 0
 parameters/crouch/TimeScale/scale = 2.0
@@ -1897,9 +1867,6 @@ parameters/jump/TimeScale/scale = 1.0
 parameters/roll/Add2/add_amount = 1.0
 parameters/roll/BlendSpace1D/blend_position = 0
 parameters/roll/TimeScale/scale = 1.0
-parameters/run/Add2/add_amount = 1.0
-parameters/run/BlendSpace1D/blend_position = 0
-parameters/run/TimeScale/scale = 2.0
 parameters/walk/Add2/add_amount = 1.0
 parameters/walk/BlendSpace1D/blend_position = 0.0
 parameters/walk/TimeScale/scale = 1.0

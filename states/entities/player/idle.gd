@@ -9,6 +9,9 @@ func get_transition_checks():
 		PlayerStates.Movement.walking: player.direction != 0
 	}
 
+func enter():
+	pass
+
 func get_animation_checks():
 	return {
 		PlayerAnimations.Idle: player.action_fsm.is_current_state("No_action")

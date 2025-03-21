@@ -3,10 +3,6 @@ extends Entity
 
 @export var controller: EnemyController : set = set_controller
 @export var detection_area: Area2D
-@export var max_speed = 150
-@export var max_att_speed = 150
-@export var chasing_acceleration = 25
-@export var attacking_acceleration = 100
 
 @export var contact_hitbox: HitBox
 

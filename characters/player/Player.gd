@@ -1,8 +1,6 @@
 extends Entity
 class_name Player
 
-@export var jump_speed = 300
-
 @export var controller: PlayerController : set = set_controller
 
 @onready var rollBlockinCeiling: RayCast2D = $RollCeilingRaycast
