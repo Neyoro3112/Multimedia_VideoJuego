@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csqu4li2igx7w"]
 
-[ext_resource type="FontFile" uid="uid://bwr4vrhwit87v" path="res://assets/fonts/prstartk.ttf" id="1_8gy84"]
+[ext_resource type="FontFile" uid="uid://dyba4ejqyjhbs" path="res://assets/fonts/HydrophiliaIced-Regular.ttf" id="1_8gy84"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -10,7 +10,6 @@ offset_top = 94.0
 offset_right = 943.0
 offset_bottom = 117.0
 theme_override_fonts/font = ExtResource("1_8gy84")
-theme_override_font_sizes/font_size = 12
-text = "Hola mundo (esta fuente esta mas decente)"
+text = "Hola mundo (esta fuente esta mas decente?)"
 horizontal_alignment = 1
 vertical_alignment = 1
