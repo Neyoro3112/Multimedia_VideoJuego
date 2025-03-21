@@ -22,13 +22,13 @@
 [ext_resource type="Script" uid="uid://b675r5s3te6jd" path="res://states/entities/player/attacking.gd" id="16_ey80i"]
 [ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="17_fftny"]
 [ext_resource type="Script" uid="uid://5thcbtek4krh" path="res://components/health_label.gd" id="19_kyfeq"]
-[ext_resource type="Resource" uid="uid://c5d1reux15qb8" path="res://characters/player/player_common_movement.tres" id="19_w53g3"]
+[ext_resource type="Resource" uid="uid://c5d1reux15qb8" path="res://components/movement/player_common_movement.tres" id="19_w53g3"]
 [ext_resource type="Script" uid="uid://cmqtbowdq6gcm" path="res://states/entities/player/hit.gd" id="20_yybc7"]
 [ext_resource type="Script" uid="uid://dpb522fi82w88" path="res://components/movement/jumping_movement.gd" id="21_6pj1p"]
 [ext_resource type="Script" uid="uid://db25enbpm8hmk" path="res://states/entities/player/no_action.gd" id="22_4cx7u"]
 [ext_resource type="Script" uid="uid://fg41ex266bts" path="res://components/movement/rolling_movement.gd" id="23_e0pgg"]
 [ext_resource type="Script" uid="uid://cliqy0kjy03ec" path="res://states/entities/player/death.gd" id="23_jgd8i"]
-[ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://characters/player/human_actions_controller.gd" id="26_4cx7u"]
+[ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://components/controllers/entities/player/human_actions_controller.gd" id="26_4cx7u"]
 [ext_resource type="Resource" uid="uid://dbxflqutw8dss" path="res://components/movement/average_knockback.tres" id="26_sbttr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f2pv"]
@@ -1784,7 +1784,7 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
 animation = &"idle"
-frame = 3
+frame = 2
 
 [node name="AttackArea" type="Area2D" parent="Facing" node_paths=PackedStringArray("ownerHurtbox")]
 collision_layer = 4
@@ -1926,7 +1926,7 @@ knockback_movement_component = ExtResource("26_sbttr")
 script = ExtResource("16_ey80i")
 
 [node name="AttackDuration" type="Timer" parent="ActionFSM/Attacking"]
-wait_time = 0.25
+wait_time = 0.3
 one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="ActionFSM/Attacking"]
