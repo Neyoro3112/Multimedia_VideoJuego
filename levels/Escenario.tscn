@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://bng66t284f1gm"]
+[gd_scene load_steps=15 format=4 uid="uid://bng66t284f1gm"]
 
+[ext_resource type="Script" uid="uid://xpskfioyc5mu" path="res://audio/audio_manager.gd" id="1_brbf7"]
 [ext_resource type="PackedScene" uid="uid://cpbjmulbwq8mp" path="res://characters/enemies/test_enemy/test_enemy.tscn" id="1_qxq3x"]
 [ext_resource type="PackedScene" uid="uid://bolgsbsdbdhwi" path="res://characters/player/player.tscn" id="2_t7euc"]
 [ext_resource type="Texture2D" uid="uid://cippy30ug0hxp" path="res://assets/SpriteSheets/placeholders/ScaledTiles/Mossy - TileSet.png" id="3_4ds6n"]
@@ -224,6 +225,9 @@ _data = {
 
 [node name="Escenario" type="Node2D"]
 
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("1_brbf7")
+
 [node name="Enemy" parent="." node_paths=PackedStringArray("center_marker") instance=ExtResource("1_qxq3x")]
 position = Vector2(947, 491)
 scale = Vector2(1.5, 1.5)
@@ -256,6 +260,7 @@ tile_set = SubResource("TileSet_7pqp3")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_g201c")
 autoplay = true
+bus = &"music"
 
 [node name="Platform" parent="." instance=ExtResource("4_spjx3")]
 position = Vector2(752, 209)
