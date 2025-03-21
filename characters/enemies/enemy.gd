@@ -1,26 +1,16 @@
-extends Character
+class_name Enemy
+extends Entity
 
-const SPEED = 60
+@export var controller: EnemyController : set = set_controller
+@export var detection_area: Area2D
 
-# Called when the node enters the scene tree for the first time.
-@onready var animation = $AnimationPlayer
-@onready var label = $HealthLabel
+@export var contact_hitbox: HitBox
 
-func _ready() -> void:
-	label.text = str(healthComponent.health)
-	animation.play()
+var target: Entity
 
-var direction = 1
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if position.x<= 300: direction = 1
-	elif position.x >= 900: direction = -1
-	
-	animation.flip_h = direction == -1
-	
-	position.x += direction * SPEED * delta
-
-
-func _on_health_component_health_changed(_diff: int) -> void:
-	label.text = str(healthComponent.health)
+func set_controller(new_controller: EnemyController):
+	if controller: remove_child(controller)
+	controller = new_controller
+	if controller.get_parent() != self:
+		add_child(controller)
+	controller.enemy = self
