@@ -3,7 +3,7 @@ extends EnemyState
 
 func get_transition_checks():
 	return {
-		EnemyStates.Movement.Chasing: enemy.controller.is_action_triggered(EnemyActions.spotted)
+		EnemyStates.Actions.Spot: enemy.controller.is_action_triggered(EnemyActions.spotted)
 	}
 	
 func get_animation_checks():

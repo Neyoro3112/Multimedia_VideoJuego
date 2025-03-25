@@ -2,6 +2,7 @@ class_name Entity
 extends CharacterBody2D
 
 @export var animation_controller: AnimationController
+@export var audio_controller: AudioController
 @export var facing_right = true
 @export var locked_side: bool = false
 @export var gravity = 1800

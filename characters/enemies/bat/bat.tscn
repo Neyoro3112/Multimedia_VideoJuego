@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://uhne2tr2osp"]
+[gd_scene load_steps=101 format=3 uid="uid://uhne2tr2osp"]
 
 [ext_resource type="Script" uid="uid://bvfm0o5gw6av3" path="res://characters/enemies/bat/bat.gd" id="1_5b8vu"]
 [ext_resource type="Script" uid="uid://cas7q7fsfjyhw" path="res://components/controllers/entities/enemies/enemy_controller.gd" id="2_87tbl"]
@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="3_26c4s"]
 [ext_resource type="Script" uid="uid://dfdukj8kh40sl" path="res://components/hitbox.gd" id="4_lt762"]
 [ext_resource type="Script" uid="uid://bqse0wc4xas8m" path="res://states/entities/enemies/bat/idle.gd" id="7_lt762"]
+[ext_resource type="Script" uid="uid://c6gq4tdwp1ale" path="res://components/controllers/audio_controller.gd" id="8_i7hcl"]
 [ext_resource type="Script" uid="uid://bjpp2ia82u6tg" path="res://states/StateMachine.gd" id="8_r36bf"]
+[ext_resource type="AudioStream" uid="uid://1jsua4sw0mx2" path="res://assets/sound/sfx/aleteo.ogg" id="9_6ntr6"]
 [ext_resource type="Script" uid="uid://c2m7w6rhyblev" path="res://states/entities/enemies/bat/chasing.gd" id="10_5tef2"]
+[ext_resource type="AudioStream" uid="uid://b83gll8xpjimm" path="res://assets/sound/sfx/chillido_2.ogg" id="10_71uvp"]
 [ext_resource type="Script" uid="uid://bl8rrtlq2fev0" path="res://states/entities/enemies/bat/spotting.gd" id="10_a6x2a"]
 [ext_resource type="Script" uid="uid://b17ifewaoqyee" path="res://states/entities/enemies/bat/hit.gd" id="11_1rjn6"]
 [ext_resource type="Script" uid="uid://cdfaf64yrhqv4" path="res://components/movement/fly_movement.gd" id="11_4n8rd"]
@@ -280,6 +283,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [4, 5, 6, 7]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioController")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["aleteo"],
+"method": &"update_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_lt762"]
 resource_name = "death"
@@ -380,6 +397,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioController")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["aleteo"],
+"method": &"update_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1rjn6"]
 resource_name = "scale_left"
@@ -442,6 +473,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioController")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["aleteo"],
+"method": &"update_sfx"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AudioController")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["chillido"],
+"method": &"update_sfx"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqf6u"]
@@ -590,7 +649,6 @@ animation = &"idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rcl60"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_u4i8u"]
-graph_offset = Vector2(-439.3, -150.967)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_5guhy")
 nodes/Animation/position = Vector2(-200, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rcl60")
@@ -646,6 +704,39 @@ states/spotted/node = SubResource("AnimationNodeBlendTree_8todr")
 states/spotted/position = Vector2(38, 243)
 graph_offset = Vector2(-563, 55)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vooy1"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("9_6ntr6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yuo7p"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("10_71uvp")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_er2k2"]
+clip_count = 2
+clip_0/name = &"aleteo"
+clip_0/stream = SubResource("AudioStreamRandomizer_vooy1")
+clip_0/auto_advance = 0
+clip_1/name = &"chillido"
+clip_1/stream = SubResource("AudioStreamRandomizer_yuo7p")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 0.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 0.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}
+
 [sub_resource type="Resource" id="Resource_mtq6h"]
 script = ExtResource("11_4n8rd")
 chasing_acceleration = 400.0
@@ -665,7 +756,7 @@ chasing_acceleration = 1000.0
 max_speed = 350.0
 metadata/_custom_type_script = "uid://cdfaf64yrhqv4"
 
-[node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "contact_hitbox", "animation_controller", "hurtbox")]
+[node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "contact_hitbox", "animation_controller", "audio_controller", "hurtbox")]
 collision_layer = 0
 wall_min_slide_angle = 0.785398
 platform_floor_layers = 4294967041
@@ -675,6 +766,7 @@ controller = NodePath("Controller")
 detection_area = NodePath("DetectionArea")
 contact_hitbox = NodePath("HitBox")
 animation_controller = NodePath("AnimationController")
+audio_controller = NodePath("AudioController")
 hurtbox = NodePath("HurtBox")
 
 [node name="Label" type="Label" parent="."]
@@ -766,10 +858,20 @@ parameters/death/TimeScale/scale = 1.0
 parameters/hit/Add2/add_amount = 1.0
 parameters/hit/BlendSpace1D/blend_position = 0
 parameters/hit/TimeScale/scale = 1.0
-parameters/idle/TimeScale/scale = 1.0
+parameters/idle/TimeScale/scale = 0.5
 parameters/spotted/Add2/add_amount = 1.0
 parameters/spotted/BlendSpace1D/blend_position = 0
 parameters/spotted/TimeScale/scale = 1.0
+
+[node name="AudioController" type="Node2D" parent="."]
+script = ExtResource("8_i7hcl")
+metadata/_custom_type_script = "uid://c6gq4tdwp1ale"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioController"]
+stream = SubResource("AudioStreamInteractive_er2k2")
+max_distance = 400.0
+attenuation = 0.637281
+bus = &"SFX"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_r36bf")
