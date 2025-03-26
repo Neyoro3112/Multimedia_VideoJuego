@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_xqdvq")
-duration = 0.4
+duration = 0.6
 do_apply_gravity = true
+vertical_mutliplier = 1.0
 metadata/_custom_type_script = "uid://chifhhp1npv8y"

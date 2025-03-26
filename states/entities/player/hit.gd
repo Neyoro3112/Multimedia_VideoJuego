@@ -16,6 +16,7 @@ func get_animation_checks():
 	}
 
 func enter():
+	AudioGlobals.set_main_buses_effect_send(AudioBuses.Effects.HitEffect)
 	player.movement_fsm.paused = true
 	update_animation()
 	knockback_movement_component.init(entity)
@@ -27,6 +28,7 @@ func physics_update(delta: float):
 		check_transitions()
 		
 func exit():
+	AudioGlobals.reset_main_buses_send()
 	player.revert_movement_component()
 	player.movement_fsm.paused = false
 
@@ -34,3 +36,4 @@ func _on_hurt_box_hit(_dmg: int, healthComponent: HealthComponent, hitbox: HitBo
 	if not healthComponent.is_alive: return
 	knockback_movement_component.setup_knockback(hitbox, player)
 	transitioned.emit(PlayerStates.Action.hit)
+	

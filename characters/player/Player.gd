@@ -18,3 +18,4 @@ func set_controller(new_controller: PlayerController):
 	if controller.get_parent() != self:
 		add_child(controller)
 	controller.player = self
+	
