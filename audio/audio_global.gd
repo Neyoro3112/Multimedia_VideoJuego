@@ -1,6 +1,10 @@
 class_name AudioGlobals
 extends Node
 
+## Son los tipos de sonidos que se podran reproducir de manera global en el juego.
+enum TYPES {}
+
+
 var music_volume: float
 var sfx_volume: float
 

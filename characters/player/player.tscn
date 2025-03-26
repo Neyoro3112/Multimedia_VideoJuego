@@ -1922,7 +1922,7 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_xgymn")
 animation = &"idle"
-frame = 1
+frame = 4
 
 [node name="AttackArea" type="Area2D" parent="Facing" node_paths=PackedStringArray("ownerHurtbox")]
 collision_layer = 4

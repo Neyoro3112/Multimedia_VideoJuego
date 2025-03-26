@@ -1,0 +1,36 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://bq36u1pgqgqhd"]
+
+[ext_resource type="AudioStream" uid="uid://cp61csb5meo5i" path="res://assets/sound/Tema_2.ogg" id="1_kx3j3"]
+[ext_resource type="AudioStream" uid="uid://c6i1lsmt02cmp" path="res://assets/sound/tema_inicial_vf.ogg" id="1_q0exd"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"MainMusic"
+clip_0/stream = ExtResource("1_q0exd")
+clip_0/auto_advance = 0
+clip_1/name = &"MainMenu"
+clip_1/stream = ExtResource("1_kx3j3")
+clip_1/auto_advance = 0
+initial_clip = 1
+_transitions = {
+Vector2i(0, 0): {
+"fade_beats": 0.0,
+"fade_mode": 4,
+"filler_clip": 0,
+"from_time": 0,
+"to_time": 1,
+"use_filler_clip": true
+},
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
