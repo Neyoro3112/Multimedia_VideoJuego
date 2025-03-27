@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm7q4754rgaun"]
+[gd_scene load_steps=7 format=3 uid="uid://cm7q4754rgaun"]
 
 [ext_resource type="Script" uid="uid://xpskfioyc5mu" path="res://audio/audio_manager.gd" id="1_drlug"]
 [ext_resource type="AudioStream" uid="uid://bq36u1pgqgqhd" path="res://audio/background_music_audio_stream.tres" id="2_0i2i4"]
+[ext_resource type="Script" uid="uid://drtv5vrmiywss" path="res://audio/audio_culling_settings.gd" id="2_mhfhn"]
 [ext_resource type="Script" uid="uid://b32vfbnvdrqtv" path="res://audio/music_controller.gd" id="2_vxw8f"]
+[ext_resource type="AudioStream" uid="uid://cfob7xw5nbl7h" path="res://assets/sound/sfx/sonido_seleccion.ogg" id="3_i1k7u"]
+
+[sub_resource type="Resource" id="Resource_8j4p3"]
+script = ExtResource("2_mhfhn")
+limit = 3
+audio_stream = ExtResource("3_i1k7u")
+volume = 0.0
+bus = &"SFX"
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://drtv5vrmiywss"
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_drlug")
+audio_dict = Dictionary[int, ExtResource("2_mhfhn")]({
+0: SubResource("Resource_8j4p3")
+})
 
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("2_vxw8f")

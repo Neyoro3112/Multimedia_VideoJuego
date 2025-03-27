@@ -4,7 +4,7 @@ extends Node
 
 @onready var music_controller: MusicController = $MusicController
 
-func create_global_audio(type: AudioGlobals.TYPES) -> void:
+func play_global_audio(type: AudioGlobals.TYPES) -> void:
 	if audio_dict.has(type):
 		var audio_culling_settings: AudioCullingSettings = audio_dict[type]
 		if audio_culling_settings.max_reached(): return

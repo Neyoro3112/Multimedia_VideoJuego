@@ -15,5 +15,4 @@ func max_reached() -> bool:
 	return current_instance_count >= limit
 	
 func on_audio_finished() -> void:
-	print("AudioFinished")
 	current_instance_count -= 1

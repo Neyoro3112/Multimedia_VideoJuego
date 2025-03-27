@@ -2,7 +2,9 @@ class_name AudioGlobals
 extends Node
 
 ## Son los tipos de sonidos que se podran reproducir de manera global en el juego.
-enum TYPES {}
+enum TYPES {
+	UI_SELECTION
+}
 
 
 var music_volume: float
