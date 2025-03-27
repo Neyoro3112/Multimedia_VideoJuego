@@ -1,7 +1,7 @@
 [gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://bq36u1pgqgqhd"]
 
-[ext_resource type="AudioStream" uid="uid://cp61csb5meo5i" path="res://assets/sound/Tema_2.ogg" id="1_kx3j3"]
-[ext_resource type="AudioStream" uid="uid://c6i1lsmt02cmp" path="res://assets/sound/tema_inicial_vf.ogg" id="1_q0exd"]
+[ext_resource type="AudioStream" uid="uid://cp61csb5meo5i" path="res://assets/sound/music/Tema_2.ogg" id="1_kx3j3"]
+[ext_resource type="AudioStream" uid="uid://c6i1lsmt02cmp" path="res://assets/sound/music/tema_inicial_vf.ogg" id="1_q0exd"]
 
 [resource]
 clip_count = 2
