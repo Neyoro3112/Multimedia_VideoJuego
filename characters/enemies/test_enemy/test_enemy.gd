@@ -10,10 +10,7 @@ const SPEED = 60
 
 func _ready() -> void:
 	animation.play()
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_U:
-			AudioManager.play_global_audio(AudioGlobals.TYPES.UI_SELECTION)
+
 var direction = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

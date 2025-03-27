@@ -6,10 +6,22 @@ enum TYPES {
 	UI_SELECTION
 }
 
+static var master_volume: float = 1. :
+	set(value):
+		set_bus_volume(clampf(value, 0, 1), AudioBuses.Master)
+static var music_volume: float = 1. :
+	set(value):
+		set_bus_volume(clampf(value, 0, 1), AudioBuses.Main.Music)
+static var sfx_volume: float = 1. :
+	set(value):
+		set_bus_volume(clampf(value, 0, 1), AudioBuses.Main.SFX)
 
-var music_volume: float
-var sfx_volume: float
-
+static func set_bus_volume(value: float, bus: StringName):
+	var bus_idx := AudioServer.get_bus_index(bus)
+	if bus_idx == -1: push_error("Bus: %s not found." % bus)
+	
+	AudioServer.set_bus_volume_linear(bus_idx, value)
+	
 static func set_bus_send(source_bus: String, destination_bus: String) -> void:
 	var source_index = AudioServer.get_bus_index(source_bus)
 	var dest_index = AudioServer.get_bus_index(destination_bus)
