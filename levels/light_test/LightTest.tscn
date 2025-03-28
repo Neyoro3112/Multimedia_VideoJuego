@@ -261,10 +261,10 @@ position = Vector2(-578, 357)
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 10
 script = ExtResource("5_ymsw0")
+preview_enabled = false
 metadata/_custom_type_script = "uid://c55j1xbl78peu"
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-position = Vector2(657.125, 0)
 motion_scale = Vector2(1.5, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="ParallaxForeground/ParallaxLayer"]
