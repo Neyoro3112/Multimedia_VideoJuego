@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bfirexygueho0"]
+
+[ext_resource type="Shader" uid="uid://dfbbkn34jiyhg" path="res://shaders/player_dissolve.gdshader" id="1_y10fp"]
+[ext_resource type="Texture2D" uid="uid://bf2cnu0p6jcfn" path="res://assets/textures/dissolve_texture.png" id="2_y10fp"]
+
+[resource]
+shader = ExtResource("1_y10fp")
+shader_parameter/dissolve_texture = ExtResource("2_y10fp")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.01
+shader_parameter/burn_color = Color(4, 0.5, 0, 1)
