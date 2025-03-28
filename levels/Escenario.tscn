@@ -8,7 +8,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mdla5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keonl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nswwf"]
 texture = ExtResource("3_4ds6n")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -172,7 +172,7 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Block"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/2 = SubResource("TileSetAtlasSource_keonl")
+sources/2 = SubResource("TileSetAtlasSource_nswwf")
 
 [sub_resource type="Animation" id="Animation_iwwqb"]
 length = 0.001
@@ -221,12 +221,6 @@ center_marker = NodePath("../Mob1")
 
 [node name="Jose" parent="." instance=ExtResource("2_t7euc")]
 position = Vector2(75, 91)
-
-[node name="Camera2D" type="Camera2D" parent="Jose"]
-position = Vector2(0, -1)
-scale = Vector2(0.666667, 0.666667)
-zoom = Vector2(1.555, 1.555)
-position_smoothing_enabled = true
 
 [node name="Obstaculos" type="Node2D" parent="."]
 
