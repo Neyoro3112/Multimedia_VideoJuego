@@ -27,6 +27,10 @@ AudioManager="*res://audio/audio_manager.tscn"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.previewing_parallax_background/plugin.cfg")
+
 [global_group]
 
 EnemyBox="Pertenecen a el todas las hitbox o hurtbox de enemigos"
@@ -80,3 +84,4 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true
