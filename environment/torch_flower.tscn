@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://vtadaeumw7mw"]
+
+[ext_resource type="Texture2D" uid="uid://b71fhfm2bhy3r" path="res://assets/SpriteSheets/torch_flower.png" id="1_1p4ae"]
+[ext_resource type="Texture2D" uid="uid://o6b4j72wauma" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="2_4kpi6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k62w5"]
+atlas = ExtResource("1_1p4ae")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7le2r"]
+atlas = ExtResource("1_1p4ae")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqqov"]
+atlas = ExtResource("1_1p4ae")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aode7"]
+atlas = ExtResource("1_1p4ae")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7y0fu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k62w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7le2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqqov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aode7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ejxp"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 40.0
+radial_accel_max = 40.0
+color = Color(0.333709, 0.933361, 1, 1)
+
+[node name="TorchFlower" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7y0fu")
+autoplay = "default"
+frame_progress = 0.566953
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 10)
+color = Color(0.216249, 0.881246, 1, 1)
+energy = 0.7
+texture = ExtResource("2_4kpi6")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1, 9)
+amount = 5
+amount_ratio = 0.7
+lifetime = 0.3
+speed_scale = 0.3
+explosiveness = 0.4
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_0ejxp")
