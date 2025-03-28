@@ -2,7 +2,8 @@ extends PlayerState
 class_name PlayerDeath
 
 @export var knockback_movement_component: KnockbackMovement
-
+@export var particles_scene: PackedScene
+@export var particles_position_marker: Marker2D
 
 func enter():
 	player.movement_component = knockback_movement_component
@@ -19,3 +20,8 @@ func _on_hurt_box_hit(_dmg: int, healthComponent: HealthComponent, hitbox: HitBo
 	if healthComponent.is_alive: return
 	knockback_movement_component.setup_knockback(hitbox, player)
 	transitioned.emit(PlayerStates.Action.death)
+
+func emit_death_particles():
+	var particles := particles_scene.instantiate() as Node2D
+	particles.global_position = particles_position_marker.global_position
+	player.get_parent().add_child(particles)
