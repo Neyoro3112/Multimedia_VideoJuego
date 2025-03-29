@@ -31,3 +31,4 @@ func _physics_process(_delta: float) -> void:
 func _on_detection_area_body_entered(body: Entity) -> void:
 	enemy.target = body
 	actions[EnemyActions.spotted] = true
+	enemy.direction = sign(enemy.global_position.direction_to(body.global_position).x)
