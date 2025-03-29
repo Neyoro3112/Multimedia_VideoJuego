@@ -3,36 +3,36 @@
 [ext_resource type="Texture2D" uid="uid://b71fhfm2bhy3r" path="res://assets/SpriteSheets/torch_flower.png" id="1_1p4ae"]
 [ext_resource type="Texture2D" uid="uid://o6b4j72wauma" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="2_4kpi6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k62w5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_owt73"]
 atlas = ExtResource("1_1p4ae")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7le2r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc1g8"]
 atlas = ExtResource("1_1p4ae")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqqov"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4ouu"]
 atlas = ExtResource("1_1p4ae")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aode7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y87gf"]
 atlas = ExtResource("1_1p4ae")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7y0fu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k62w5")
+"texture": SubResource("AtlasTexture_owt73")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7le2r")
+"texture": SubResource("AtlasTexture_nc1g8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqqov")
+"texture": SubResource("AtlasTexture_o4ouu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aode7")
+"texture": SubResource("AtlasTexture_y87gf")
 }],
 "loop": true,
 "name": &"default",
@@ -57,10 +57,10 @@ color = Color(0.333709, 0.933361, 1, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7y0fu")
 autoplay = "default"
-frame_progress = 0.566953
+frame_progress = 0.00440619
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, 10)
+position = Vector2(1, 8)
 color = Color(0.216249, 0.881246, 1, 1)
 energy = 0.7
 texture = ExtResource("2_4kpi6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=186 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_7b6hw"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -36,12 +36,6 @@
 [ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://components/controllers/entities/player/human_actions_controller.gd" id="26_4cx7u"]
 [ext_resource type="Resource" uid="uid://dbxflqutw8dss" path="res://components/movement/average_knockback.tres" id="26_sbttr"]
 [ext_resource type="PackedScene" uid="uid://bp2i4fykf7itp" path="res://characters/player/death_particles.tscn" id="34_iopkm"]
-
-[sub_resource type="Environment" id="Environment_iopkm"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 1.0
-glow_hdr_threshold = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f2pv"]
 atlas = ExtResource("2_mckqi")
@@ -1958,9 +1952,6 @@ script = ExtResource("1_7b6hw")
 controller = NodePath("HumanActionsController")
 animation_controller = NodePath("AnimationController")
 hurtbox = NodePath("HurtBox")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_iopkm")
 
 [node name="HumanActionsController" type="Node" parent="."]
 script = ExtResource("26_4cx7u")
