@@ -25,7 +25,7 @@ AudioManager="*res://audio/audio_manager.tscn"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

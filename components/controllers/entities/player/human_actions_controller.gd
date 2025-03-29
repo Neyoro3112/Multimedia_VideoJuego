@@ -6,7 +6,7 @@ var input_buffer: Dictionary[StringName, float] = {}
 var buffer_time: float = 0.15
 
 func _physics_process(_delta: float) -> void:
-	player.direction = Input.get_axis("move_left", "move_right")
+	player.direction = int(Input.get_axis("move_left", "move_right"))
 	update_input_map()
 	update_buffer(_delta)
 func update_input_map() -> void:

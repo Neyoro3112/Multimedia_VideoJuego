@@ -10,7 +10,7 @@ extends MovementComponent
 
 var current_hitbox: HitBox
 var velocity: float : get = get_knockback_velocity
-var direction: float : 
+var direction: int : 
 	set(value):
 		direction = sign(value)
 		
@@ -23,7 +23,7 @@ var time_left: float = 0 :
 
 func get_knockback_velocity() -> float:
 	
-	return direction * current_hitbox.knockbak if current_hitbox else 0.
+	return direction * current_hitbox.knockbak if current_hitbox else 0
 
 func init(entity: Entity):
 	time_left = duration
@@ -32,7 +32,7 @@ func init(entity: Entity):
 
 func setup_knockback(hitbox: HitBox, entity: Entity):
 	current_hitbox = hitbox
-	direction = (entity.global_position.x - hitbox.global_position.x)
+	direction = int((entity.global_position.x - hitbox.global_position.x))
 
 
 func update_movement(delta: float, entity: Entity) -> void:
