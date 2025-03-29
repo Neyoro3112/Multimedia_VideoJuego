@@ -13,7 +13,6 @@ func enter():
 
 func physics_update(delta: float):
 	player.update_physics(delta)
-	player.move_and_slide()
 
 
 func _on_hurt_box_hit(_dmg: int, healthComponent: HealthComponent, hitbox: HitBox) -> void:

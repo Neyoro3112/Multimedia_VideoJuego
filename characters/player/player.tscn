@@ -2152,4 +2152,3 @@ position_smoothing_enabled = true
 [connection signal="health_changed" from="Health" to="DebugLabel" method="_on_health_health_changed"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Hit" method="_on_hurt_box_hit"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Death" method="_on_hurt_box_hit"]
-[connection signal="transitioned" from="MovementFSM" to="DebugLabel" method="_on_movement_fsm_transitioned"]
