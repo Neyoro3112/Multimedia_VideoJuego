@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready():
 	gpu_particles_2d.emitting = true
+	gpu_particles_2d.one_shot = true
 
 func _on_gpu_particles_2d_finished() -> void:
 	print("Particles out")

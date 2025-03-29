@@ -10,7 +10,6 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sk71q"]
 scenes/1/scene = ExtResource("4_aenba")
-scenes/1/display_placeholder = ExtResource("4_aenba")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ldgqh"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -1005,7 +1004,7 @@ script = ExtResource("5_ymsw0")
 metadata/_custom_type_script = "uid://c55j1xbl78peu"
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-329.455, 0)
+position = Vector2(-303.51, 0)
 motion_scale = Vector2(0.6, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
