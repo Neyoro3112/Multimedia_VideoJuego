@@ -1,12 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://dg2jekbrs1j2t"]
+[gd_scene load_steps=12 format=4 uid="uid://dg2jekbrs1j2t"]
 
 [ext_resource type="PackedScene" uid="uid://bolgsbsdbdhwi" path="res://characters/player/player.tscn" id="1_j32lv"]
 [ext_resource type="Texture2D" uid="uid://o6b4j72wauma" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="2_ccdi4"]
-[ext_resource type="Texture2D" uid="uid://cm4q8qqfq2hkn" path="res://assets/SpriteSheets/placeholders/ScaledTiles/Mossy - TileSet-32x32.png" id="4_8dwts"]
 [ext_resource type="PackedScene" uid="uid://vtadaeumw7mw" path="res://environment/torch_flower.tscn" id="4_aenba"]
 [ext_resource type="Texture2D" uid="uid://beh5j3hr51fho" path="res://assets/SpriteSheets/placeholders/dungeon_tileset/Dungeon Tile Set.png" id="5_ldgqh"]
 [ext_resource type="PackedScene" uid="uid://uhne2tr2osp" path="res://characters/enemies/bat/bat.tscn" id="5_sk71q"]
-[ext_resource type="Script" uid="uid://c55j1xbl78peu" path="res://addons/nklbdev.previewing_parallax_background/PreviewingParallaxBackground.gd" id="5_ymsw0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sk71q"]
 scenes/1/scene = ExtResource("4_aenba")
@@ -815,124 +813,6 @@ terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetScenesCollectionSource_sk71q")
 sources/4 = SubResource("TileSetAtlasSource_0gc8t")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sk71q"]
-texture = ExtResource("4_8dwts")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_right_corner = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
-1:0/0/terrains_peering_bit/right_side = 0
-1:0/0/terrains_peering_bit/bottom_right_corner = 0
-1:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0/terrains_peering_bit/bottom_left_corner = 0
-1:0/0/terrains_peering_bit/left_side = 0
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 0
-2:0/0/terrains_peering_bit/bottom_side = 0
-2:0/0/terrains_peering_bit/bottom_left_corner = 0
-2:0/0/terrains_peering_bit/left_side = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/terrain = 0
-0:1/0/terrains_peering_bit/right_side = 0
-0:1/0/terrains_peering_bit/bottom_right_corner = 0
-0:1/0/terrains_peering_bit/bottom_side = 0
-0:1/0/terrains_peering_bit/top_side = 0
-0:1/0/terrains_peering_bit/top_right_corner = 0
-1:1/0 = 0
-1:1/0/terrain_set = 0
-1:1/0/terrain = 0
-1:1/0/terrains_peering_bit/right_side = 0
-1:1/0/terrains_peering_bit/bottom_right_corner = 0
-1:1/0/terrains_peering_bit/bottom_side = 0
-1:1/0/terrains_peering_bit/bottom_left_corner = 0
-1:1/0/terrains_peering_bit/left_side = 0
-1:1/0/terrains_peering_bit/top_left_corner = 0
-1:1/0/terrains_peering_bit/top_side = 0
-1:1/0/terrains_peering_bit/top_right_corner = 0
-2:1/0 = 0
-2:1/0/terrain_set = 0
-2:1/0/terrain = 0
-2:1/0/terrains_peering_bit/bottom_side = 0
-2:1/0/terrains_peering_bit/bottom_left_corner = 0
-2:1/0/terrains_peering_bit/left_side = 0
-2:1/0/terrains_peering_bit/top_left_corner = 0
-2:1/0/terrains_peering_bit/top_side = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/terrain = 0
-0:2/0/terrains_peering_bit/right_side = 0
-0:2/0/terrains_peering_bit/top_side = 0
-0:2/0/terrains_peering_bit/top_right_corner = 0
-1:2/0 = 0
-1:2/0/terrain_set = 0
-1:2/0/terrain = 0
-1:2/0/terrains_peering_bit/right_side = 0
-1:2/0/terrains_peering_bit/left_side = 0
-1:2/0/terrains_peering_bit/top_left_corner = 0
-1:2/0/terrains_peering_bit/top_side = 0
-1:2/0/terrains_peering_bit/top_right_corner = 0
-2:2/0 = 0
-2:2/0/terrain_set = 0
-2:2/0/terrain = 0
-2:2/0/terrains_peering_bit/left_side = 0
-2:2/0/terrains_peering_bit/top_left_corner = 0
-2:2/0/terrains_peering_bit/top_side = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_ymsw0"]
-tile_size = Vector2i(32, 32)
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/2 = SubResource("TileSetAtlasSource_sk71q")
-
 [sub_resource type="Environment" id="Environment_sk71q"]
 background_mode = 3
 ambient_light_source = 1
@@ -984,36 +864,6 @@ tile_set = SubResource("TileSet_aenba")
 position = Vector2(20, 0)
 tile_map_data = PackedByteArray("AAD9/wcABAACAAIAAAD+/wcABAACAAIAAAD//wcABAACAAIAAAD//wYABAACAAEAAAAAAAYABAACAAEAAAABAAYABAACAAEAAAACAAYABAACAAEAAAADAAYABAACAAEAAAAEAAYABAACAAEAAAAFAAYABAACAAEAAAAGAAYABAACAAEAAAAHAAYABAACAAEAAAAIAAYABAACAAEAAAAIAAcABAACAAIAAAAJAAcABAADAAIAAAAJAAgABAADAAMAAAAIAAgABAACAAMAAAAHAAgABAACAAMAAAAGAAgABAACAAMAAAAFAAcABAACAAIAAAAEAAcABAACAAIAAAADAAcABAACAAIAAAACAAcABAACAAIAAAABAAcABAACAAIAAAAAAAcABAACAAIAAAAHAAcABAACAAIAAAAGAAcABAACAAIAAAD//wgABAACAAMAAAAAAAgABAACAAMAAAABAAgABAACAAMAAAACAAgABAACAAMAAAADAAgABAACAAMAAAAEAAgABAACAAMAAAAFAAgABAACAAMAAAD+/wgABAACAAMAAAD+/wYABAACAAEAAAD9/wYABAACAAEAAAD9/wgABAACAAMAAAAJAAYABAADAAEAAAAOAAcABAABAAcAAAAPAAcABAACAAcAAAAQAAcABAACAAcAAAARAAcABAACAAcAAAASAAcABAACAAcAAAATAAcABAACAAcAAAAUAAcABAACAAcAAAAVAAcABAADAAcAAAAOAAYABAABAAUAAAAPAAYABAACAAUAAAAQAAYABAACAAUAAAARAAYABAACAAUAAAASAAYABAACAAUAAAATAAYABAACAAUAAAAUAAYABAACAAUAAAAVAAYABAADAAUAAAD9//7/BAACAAUAAAD+//7/BAACAAUAAAD///7/BAACAAUAAAACAP7/BAACAAUAAAADAP7/BAACAAUAAAAEAP7/BAACAAUAAAAFAP7/BAACAAUAAAAHAP7/BAACAAUAAAAIAP7/BAACAAUAAAAJAP7/BAACAAUAAAAKAP7/BAACAAUAAAALAP7/BAACAAUAAAAMAP7/BAACAAUAAAANAP7/BAACAAUAAAAOAP7/BAACAAUAAAD8//7/BAACAAUAAAD7//7/BAACAAUAAAD6//7/BAACAAUAAAD5//7/BAACAAUAAAD4//7/BAACAAUAAAD3//7/BAABAAUAAAD8/wgABAACAAMAAAD8/wcABAACAAIAAAD8/wYABAACAAEAAAD7/wgABAACAAMAAAD7/wcABAACAAIAAAD7/wYABAACAAEAAAD6/wgABAACAAMAAAD6/wcABAACAAIAAAD6/wYABAACAAEAAAD5/wgABAACAAMAAAD5/wcABAACAAIAAAD5/wYABAACAAEAAAD4/wgABAACAAMAAAD4/wcABAACAAIAAAD4/wYABAACAAEAAAD3/wgABAACAAMAAAD3/wcABAACAAIAAAD3/wYABAACAAEAAAD2/wgABAACAAMAAAD2/wcABAACAAIAAAD2/wYABAACAAEAAAD1/wgABAACAAMAAAD1/wcABAACAAIAAAD1/wYABAACAAEAAAD0/wgABAACAAMAAAD0/wcABAACAAIAAAD0/wYABAACAAEAAADz/wgABAACAAMAAADz/wcABAACAAIAAADz/wYABAACAAEAAADy/wgABAACAAMAAADy/wcABAACAAIAAADy/wYABAACAAEAAADx/wgABAACAAMAAADx/wcABAACAAIAAADx/wYABAACAAEAAADw/wgABAACAAMAAADw/wcABAACAAIAAADw/wYABAACAAEAAADv/wgABAACAAMAAADv/wcABAACAAIAAADv/wYABAACAAEAAADu/wgABAACAAMAAADu/wcABAACAAIAAADu/wYABAACAAEAAADt/wgABAACAAMAAADt/wcABAACAAIAAADt/wYABAACAAEAAADs/wgABAACAAMAAADs/wcABAACAAIAAADs/wYABAACAAEAAADr/wgABAACAAMAAADr/wcABAACAAIAAADr/wYABAACAAEAAADq/wgABAACAAMAAADq/wcABAACAAIAAADq/wYABAACAAEAAADp/wgABAACAAMAAADp/wcABAACAAIAAADp/wYABAACAAEAAADo/wgABAABAAMAAADo/wcABAABAAIAAADo/wYABAABAAIAAADo/wUABAABAAIAAADo/wQABAABAAIAAADo/wMABAABAAIAAADo/wIABAABAAIAAADo/wEABAABAAIAAADo/wAABAABAAIAAADo////BAABAAIAAADo//7/BAABAAEAAADx//7/BAADAAMAAADr//7/BAADAAMAAADq//7/BAACAAMAAADp//7/BAACAAMAAAD2//7/BAADAAMAAAD1//7/BAACAAMAAAD0//7/BAACAAMAAADz//7/BAABAAMAAAA=")
 tile_set = SubResource("TileSet_aenba")
-
-[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
-layer = 10
-script = ExtResource("5_ymsw0")
-preview_enabled = false
-metadata/_custom_type_script = "uid://c55j1xbl78peu"
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-motion_scale = Vector2(1.5, 1)
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="ParallaxForeground/ParallaxLayer"]
-position = Vector2(1, -1)
-scale = Vector2(2, 2)
-tile_set = SubResource("TileSet_ymsw0")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("5_ymsw0")
-metadata/_custom_type_script = "uid://c55j1xbl78peu"
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-322.615, 0)
-motion_scale = Vector2(0.6, 1)
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, -1)
-tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wEAAgABAAAAAAD//wEAAgABAAAAAAAAAAEAAgABAAAAAAABAAEAAgABAAAAAAACAAEAAgABAAAAAAADAAEAAgABAAAAAAAEAAEAAgABAAAAAAAFAAEAAgABAAAAAAAGAAEAAgABAAAAAAAHAAEAAgABAAAAAAAIAAEAAgABAAAAAAAJAAEAAgABAAAAAAAKAAEAAgACAAAAAAAKAAIAAgACAAEAAAAKAAMAAgACAAEAAAAKAAQAAgACAAIAAAAJAAQAAgABAAIAAAAIAAQAAgABAAIAAAAHAAQAAgABAAIAAAAGAAQAAgABAAIAAAAFAAQAAgAAAAIAAAAEAAMAAgAAAAIAAAADAAMAAgAAAAIAAAACAAMAAgACAAIAAAABAAMAAgABAAIAAAAAAAMAAgABAAIAAAD//wMAAgABAAIAAAD+/wMAAgABAAIAAAD+/wIAAgABAAEAAAAIAAIAAgABAAEAAAAIAAMAAgABAAEAAAAHAAMAAgABAAEAAAAGAAMAAgABAAEAAAAFAAMAAgABAAEAAAACAAIAAgABAAEAAAABAAIAAgABAAEAAAAAAAIAAgABAAEAAAD//wIAAgABAAEAAAADAAIAAgABAAEAAAD9/wIAAgAAAAEAAAD9/wMAAgAAAAIAAAAJAAMAAgABAAEAAAAJAAIAAgABAAEAAAAHAAIAAgABAAEAAAAGAAIAAgABAAEAAAAFAAIAAgABAAEAAAAEAAIAAgABAAEAAAABAAYAAgAAAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAcAAgACAAIAAAAFAAcAAgABAAEAAAAEAAcAAgABAAEAAAAEAAgAAgABAAIAAAADAAgAAgABAAIAAAACAAgAAgABAAIAAAACAAcAAgABAAEAAAABAAcAAgAAAAIAAAADAAcAAgABAAEAAAAFAAgAAgACAAIAAAAGAAYAAgACAAAAAAAJAP3/AgACAAAAAAAIAP3/AgABAAAAAAAHAP3/AgABAAAAAAAGAP3/AgABAAAAAAAFAP3/AgABAAAAAAAEAP3/AgAAAAAAAAAEAP7/AgAAAAIAAAAFAP//AgAAAAIAAAAGAP//AgABAAIAAAAHAP//AgABAAIAAAAIAP//AgABAAIAAAAJAP//AgACAAIAAAAJAP7/AgACAAEAAAAGAP7/AgABAAEAAAAFAP7/AgABAAEAAAAIAP7/AgABAAEAAAAHAP7/AgABAAEAAAA=")
-tile_set = SubResource("TileSet_ymsw0")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
-color = Color(0.845054, 0.665768, 1, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.804743, 0.804743, 0.804743, 1)
