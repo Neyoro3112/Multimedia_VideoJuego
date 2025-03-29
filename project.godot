@@ -85,4 +85,3 @@ attack={
 
 textures/canvas_textures/default_texture_filter=0
 viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.113861, 0.00427946, 0.210851, 1)

@@ -948,7 +948,6 @@ glow_hdr_threshold = 2.0
 z_index = 30
 position = Vector2(49, -145)
 rotation = -0.233874
-scale = Vector2(1, 1)
 color = Color(0.891671, 0.810625, 0.999999, 1)
 energy = 1.49
 shadow_enabled = true
@@ -1006,7 +1005,7 @@ script = ExtResource("5_ymsw0")
 metadata/_custom_type_script = "uid://c55j1xbl78peu"
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-322.398, 0)
+position = Vector2(-329.455, 0)
 motion_scale = Vector2(0.6, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
