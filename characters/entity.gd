@@ -20,7 +20,7 @@ func revert_movement_component():
 	movement_component = last_movement_component
 
 
-var direction = 0 : set = set_direction
+var direction: int = 0 : set = set_direction
 
 func update_physics(_delta: float):
 	if not movement_component: return
@@ -30,7 +30,7 @@ func update_physics(_delta: float):
 func set_locked_side(value: bool):
 	locked_side = value
 func set_direction(new_direction: int):
-	direction = clampi(new_direction, -1, 1)
+	direction = sign(new_direction)
 	check_direction()
 func check_direction():
 	if locked_side: return
