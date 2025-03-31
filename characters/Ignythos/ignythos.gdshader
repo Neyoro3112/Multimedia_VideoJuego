@@ -5,6 +5,13 @@ render_mode blend_mix, unshaded;
 uniform vec2 fire_scale = vec2(1.0, 1.0);
 uniform vec2 fire_speed_direction = vec2(0.0, 1.0);
 
+/**
+ * [b]Intensidad del fuego[/b]
+ * Controla el brillo de la llama. Un valor de 1.0 representa el brillo normal,
+ * mientras que valores superiores aumentan la intensidad y valores inferiores la reducen.
+ */
+uniform float flame_intensity : hint_range(0.0, 2.0) = 1.0;
+uniform float flame_height_variation: hint_range(0.0, 2.) = 1.0;
 // Fire texture maps
 uniform sampler2D fire_noise : source_color, repeat_enable;
 uniform sampler2D fire_height_gradient : source_color;
@@ -43,7 +50,7 @@ void fragment() {
 	float flame_height_value = flame_height_tex.r;
 
 	// Final fire intensity calculation
-	float fire_intensity = shaped_fire - flame_height_value;
+	float fire_intensity = shaped_fire - flame_height_value * flame_height_variation;
 
 	// Clamp fire intensity between 0 and 1
 	fire_intensity = clamp(fire_intensity, 0.0, 1.0);
@@ -53,6 +60,6 @@ void fragment() {
 
 	// Assign final color output
 	
-	COLOR.rgb = final_fire_color.rgb;
+	COLOR.rgb = final_fire_color.rgb * flame_intensity;
 	COLOR.a = final_fire_color.a;
 }
