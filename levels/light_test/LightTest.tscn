@@ -848,11 +848,6 @@ texture = ExtResource("2_ccdi4")
 [node name="FlyingEnemy" parent="." instance=ExtResource("5_sk71q")]
 position = Vector2(163, 70)
 
-[node name="PointLight2D" type="PointLight2D" parent="FlyingEnemy"]
-visible = false
-color = Color(0.723748, 0.395756, 1, 1)
-texture = ExtResource("2_ccdi4")
-
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Background" type="TileMapLayer" parent="Tiles"]

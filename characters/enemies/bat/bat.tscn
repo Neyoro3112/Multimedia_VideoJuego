@@ -757,7 +757,7 @@ max_speed = 350.0
 metadata/_custom_type_script = "uid://cdfaf64yrhqv4"
 
 [node name="FlyingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("controller", "detection_area", "contact_hitbox", "animation_controller", "audio_controller", "hurtbox")]
-collision_layer = 0
+collision_layer = 64
 wall_min_slide_angle = 0.785398
 platform_floor_layers = 4294967041
 safe_margin = 0.18

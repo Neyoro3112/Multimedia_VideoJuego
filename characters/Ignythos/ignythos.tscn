@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dnk42nxantht4"]
+[gd_scene load_steps=42 format=3 uid="uid://dnk42nxantht4"]
 
 [ext_resource type="Script" uid="uid://pl0oqbnc8hvs" path="res://characters/Ignythos/ignythos.gd" id="1_3esly"]
 [ext_resource type="Shader" uid="uid://b0kmxpb1j7a1i" path="res://characters/Ignythos/ignythos.gdshader" id="1_6dbx8"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c8m2a4os35iqc" path="res://assets/textures/radial_gradient.png" id="1_s8wuu"]
 [ext_resource type="Texture2D" uid="uid://bjilfckkenws3" path="res://assets/textures/fire.png" id="5_hfby0"]
 [ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="6_gqd85"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqd85"]
+radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6dbx8"]
 radius = 5.0
@@ -252,6 +255,14 @@ collision_layer = 0
 script = ExtResource("1_3esly")
 animation_controller = NodePath("AnimationController")
 
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_gqd85")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6dbx8")
 debug_color = Color(0.476, 0.56, 0.5558, 0.172549)
@@ -299,3 +310,5 @@ parameters/fall/Add2/add_amount = 1.0
 parameters/fall/TimeScale/scale = 1.0
 parameters/float/Add2/add_amount = 1.0
 parameters/float/TimeScale/scale = 1.0
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
