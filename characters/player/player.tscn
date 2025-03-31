@@ -1947,7 +1947,7 @@ roll_speed = 490.0
 metadata/_custom_type_script = "uid://fg41ex266bts"
 
 [node name="Rohein" type="CharacterBody2D" node_paths=PackedStringArray("controller", "animation_controller", "hurtbox")]
-collision_layer = 32
+collision_layer = 96
 script = ExtResource("1_7b6hw")
 controller = NodePath("HumanActionsController")
 animation_controller = NodePath("AnimationController")
@@ -1990,7 +1990,7 @@ position = Vector2(30, 19)
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
 script = ExtResource("8_fs3de")
 immortability_timer = NodePath("Timer")
-max_health = 2
+max_health = 1
 
 [node name="Timer" type="Timer" parent="Health"]
 wait_time = 0.8

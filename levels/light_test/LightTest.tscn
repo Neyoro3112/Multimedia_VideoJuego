@@ -867,5 +867,5 @@ color = Color(0.804743, 0.804743, 0.804743, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sk71q")
 
-[node name="Ignythos" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("6_8dwts")]
-following_entity = NodePath("../Rohein")
+[node name="Ignythos" parent="." instance=ExtResource("6_8dwts")]
+position = Vector2(-64, 133)

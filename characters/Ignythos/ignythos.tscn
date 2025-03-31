@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dnk42nxantht4"]
+[gd_scene load_steps=40 format=3 uid="uid://dnk42nxantht4"]
 
 [ext_resource type="Script" uid="uid://pl0oqbnc8hvs" path="res://characters/Ignythos/ignythos.gd" id="1_3esly"]
 [ext_resource type="Shader" uid="uid://b0kmxpb1j7a1i" path="res://characters/Ignythos/ignythos.gdshader" id="1_6dbx8"]
@@ -143,6 +143,23 @@ tracks/0/keys = {
 resource_name = "light_variation"
 loop_mode = 2
 step = 0.1
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [7.5, 5.0]
+}
+
+[sub_resource type="Animation" id="Animation_e6vx5"]
+resource_name = "fell_light_variation"
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,44 +170,30 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [7.5, 5.0]
+"values": [5.0, 2.0]
 }
-
-[sub_resource type="Animation" id="Animation_e6vx5"]
-resource_name = "light_intensity"
-length = 0.001
-step = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gqd85"]
 _data = {
 &"RESET": SubResource("Animation_hfby0"),
 &"fall": SubResource("Animation_gqd85"),
+&"fell_light_variation": SubResource("Animation_e6vx5"),
 &"float": SubResource("Animation_3esly"),
-&"light_intensity": SubResource("Animation_e6vx5"),
 &"light_variation": SubResource("Animation_mmmmd")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_se52m"]
-animation = &"light_intensity"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqd85"]
-animation = &"light_variation"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_alqxi"]
+animation = &"fell_light_variation"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_e6vx5"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mmmmd"]
-graph_offset = Vector2(-775.146, 63.1636)
+graph_offset = Vector2(-537.944, -50.0262)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_gqd85")
-nodes/Animation/position = Vector2(-360, 40)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_se52m")
-"nodes/Animation 2/position" = Vector2(-340, 240)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_alqxi")
-nodes/Blend2/position = Vector2(-60, 140)
+nodes/Animation/position = Vector2(-320, 160)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_e6vx5")
 nodes/TimeScale/position = Vector2(140, 120)
-node_connections = [&"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"TimeScale", 0, &"Blend2", &"output", 0, &"TimeScale"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_gqd85"]
 
@@ -254,6 +257,7 @@ graph_offset = Vector2(-63, -97.5)
 collision_layer = 0
 script = ExtResource("1_3esly")
 animation_controller = NodePath("AnimationController")
+gravity = 1000
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -304,7 +308,6 @@ libraries = {
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_ebnew")
 anim_player = NodePath("../AnimationPlayer")
-parameters/blink/Blend2/blend_amount = -1.0
 parameters/blink/TimeScale/scale = 1.0
 parameters/fall/Add2/add_amount = 1.0
 parameters/fall/TimeScale/scale = 1.0
