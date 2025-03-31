@@ -31,9 +31,16 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/nklbdev.previewing_parallax_background/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://characters/Ignythos/": "orange"
+}
+
 [global_group]
 
 EnemyBox="Pertenecen a el todas las hitbox o hurtbox de enemigos"
+follow_marker=""
 
 [input]
 

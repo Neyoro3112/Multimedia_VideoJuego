@@ -770,6 +770,7 @@ audio_controller = NodePath("AudioController")
 hurtbox = NodePath("HurtBox")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dg2jekbrs1j2t"]
+[gd_scene load_steps=13 format=4 uid="uid://dg2jekbrs1j2t"]
 
 [ext_resource type="PackedScene" uid="uid://bolgsbsdbdhwi" path="res://characters/player/player.tscn" id="1_j32lv"]
 [ext_resource type="Texture2D" uid="uid://o6b4j72wauma" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="2_ccdi4"]
 [ext_resource type="PackedScene" uid="uid://vtadaeumw7mw" path="res://environment/torch_flower.tscn" id="4_aenba"]
 [ext_resource type="Texture2D" uid="uid://beh5j3hr51fho" path="res://assets/SpriteSheets/placeholders/dungeon_tileset/Dungeon Tile Set.png" id="5_ldgqh"]
 [ext_resource type="PackedScene" uid="uid://uhne2tr2osp" path="res://characters/enemies/bat/bat.tscn" id="5_sk71q"]
+[ext_resource type="PackedScene" uid="uid://dnk42nxantht4" path="res://characters/Ignythos/ignythos.tscn" id="6_8dwts"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_sk71q"]
 scenes/1/scene = ExtResource("4_aenba")
@@ -826,7 +827,7 @@ glow_hdr_threshold = 2.0
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 z_index = 30
 position = Vector2(49, -145)
-rotation = -0.233874
+rotation = -0.203045
 color = Color(0.891671, 0.810625, 0.999999, 1)
 energy = 1.49
 shadow_enabled = true
@@ -849,7 +850,6 @@ position = Vector2(163, 70)
 
 [node name="PointLight2D" type="PointLight2D" parent="FlyingEnemy"]
 color = Color(0.723748, 0.395756, 1, 1)
-energy = 1.57
 texture = ExtResource("2_ccdi4")
 
 [node name="Tiles" type="Node2D" parent="."]
@@ -870,3 +870,6 @@ color = Color(0.804743, 0.804743, 0.804743, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sk71q")
+
+[node name="Ignythos" parent="." node_paths=PackedStringArray("following_entity") instance=ExtResource("6_8dwts")]
+following_entity = NodePath("../Rohein")
