@@ -1,14 +1,14 @@
 extends Entity
 
 @export var following_entity: Entity
-var follow_marker: IgnythosFollowMarker = null
+var follow_marker: Marker2D = null
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #func _ready():
 	#
 
-func get_follow_marker_from_entity() -> IgnythosFollowMarker:
+func get_follow_marker_from_entity() -> Marker2D:
 	var markers = following_entity.get_tree().get_nodes_in_group("follow_marker")
 	if markers.size() > 0:
 		return markers[0]
@@ -33,7 +33,6 @@ func _physics_process(_delta: float):
 		animation_player.play("fall")
 		dead = true
 	elif follow_marker:
-		
-		global_position = global_position.slerp(follow_marker.get_follow_position(), 0.1)
+		global_position = global_position.slerp(follow_marker.global_position, 0.1)
 	else:
 		follow_marker = get_follow_marker_from_entity()

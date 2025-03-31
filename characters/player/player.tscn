@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://bolgsbsdbdhwi"]
+[gd_scene load_steps=186 format=3 uid="uid://bolgsbsdbdhwi"]
 
 [ext_resource type="Script" uid="uid://bk87b5qn60qm8" path="res://characters/player/Player.gd" id="1_7b6hw"]
 [ext_resource type="Texture2D" uid="uid://02f3ys60s78p" path="res://assets/SpriteSheets/rohein_sprites/red attack.png" id="2_mckqi"]
@@ -36,7 +36,6 @@
 [ext_resource type="Script" uid="uid://cr3ja5jkdkpwe" path="res://components/controllers/entities/player/human_actions_controller.gd" id="26_4cx7u"]
 [ext_resource type="Resource" uid="uid://dbxflqutw8dss" path="res://components/movement/average_knockback.tres" id="26_sbttr"]
 [ext_resource type="PackedScene" uid="uid://bp2i4fykf7itp" path="res://characters/player/death_effect.tscn" id="34_iopkm"]
-[ext_resource type="Script" uid="uid://dohmvqhnam3ep" path="res://characters/Ignythos/ignythos_follow_marker.gd" id="37_pagxt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f2pv"]
 atlas = ExtResource("2_mckqi")
@@ -1962,8 +1961,6 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 
 [node name="IgnythosFollowMarker" type="Marker2D" parent="Facing"]
 position = Vector2(64, -34)
-script = ExtResource("37_pagxt")
-metadata/_custom_type_script = "uid://dohmvqhnam3ep"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]
 show_behind_parent = true
