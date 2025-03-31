@@ -3,7 +3,6 @@ extends Entity
 @export var following_entity: Entity
 var follow_marker: Marker2D = null
 @onready var point_light_2d: PointLight2D = $PointLight2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #func _ready():
 	#
@@ -20,7 +19,7 @@ func _physics_process(_delta: float):
 		velocity.y = 1000 * _delta
 		move_and_slide()
 		if is_on_floor():
-			animation_player.play("blink")
+			animation_controller.update_animation("blink")
 			dead = false
 			
 	if not following_entity: return
@@ -30,7 +29,7 @@ func _physics_process(_delta: float):
 		point_light_2d.energy = 10
 		velocity.y = -1000 * _delta
 		move_and_slide()
-		animation_player.play("fall")
+		animation_controller.update_animation("fall")
 		dead = true
 	elif follow_marker:
 		global_position = global_position.slerp(follow_marker.global_position, 0.1)

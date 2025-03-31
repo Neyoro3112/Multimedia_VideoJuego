@@ -1959,7 +1959,7 @@ metadata/_custom_type_script = "uid://cr3ja5jkdkpwe"
 
 [node name="Facing" type="Node2D" parent="."]
 
-[node name="IgnythosFollowMarker" type="Marker2D" parent="Facing"]
+[node name="IgnythosFollowMarker" type="Marker2D" parent="Facing" groups=["follow_marker"]]
 position = Vector2(64, -34)
 
 [node name="Sprites" type="AnimatedSprite2D" parent="Facing"]

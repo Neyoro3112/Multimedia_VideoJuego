@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnk42nxantht4"]
+[gd_scene load_steps=41 format=3 uid="uid://dnk42nxantht4"]
 
 [ext_resource type="Script" uid="uid://pl0oqbnc8hvs" path="res://characters/Ignythos/ignythos.gd" id="1_3esly"]
 [ext_resource type="Shader" uid="uid://b0kmxpb1j7a1i" path="res://characters/Ignythos/ignythos.gdshader" id="1_6dbx8"]
 [ext_resource type="Texture2D" uid="uid://o6b4j72wauma" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="1_dpruq"]
 [ext_resource type="Texture2D" uid="uid://c8m2a4os35iqc" path="res://assets/textures/radial_gradient.png" id="1_s8wuu"]
 [ext_resource type="Texture2D" uid="uid://bjilfckkenws3" path="res://assets/textures/fire.png" id="5_hfby0"]
+[ext_resource type="Script" uid="uid://cunw6ai4h1521" path="res://components/controllers/animation_controller.gd" id="6_gqd85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6dbx8"]
 radius = 5.0
@@ -135,9 +136,8 @@ tracks/0/keys = {
 "values": [Vector2(-2, -0.4), Vector2(0, 0), Vector2(2, -0.4)]
 }
 
-[sub_resource type="Animation" id="Animation_e6vx5"]
-resource_name = "blink"
-length = 2.0
+[sub_resource type="Animation" id="Animation_mmmmd"]
+resource_name = "light_variation"
 loop_mode = 2
 step = 0.1
 tracks/0/type = "value"
@@ -147,23 +147,110 @@ tracks/0/path = NodePath("PointLight2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.4, 2.0]
+"values": [7.5, 5.0]
 }
+
+[sub_resource type="Animation" id="Animation_e6vx5"]
+resource_name = "light_intensity"
+length = 0.001
+step = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gqd85"]
 _data = {
 &"RESET": SubResource("Animation_hfby0"),
-&"blink": SubResource("Animation_e6vx5"),
 &"fall": SubResource("Animation_gqd85"),
-&"float": SubResource("Animation_3esly")
+&"float": SubResource("Animation_3esly"),
+&"light_intensity": SubResource("Animation_e6vx5"),
+&"light_variation": SubResource("Animation_mmmmd")
 }
 
-[node name="Ignythos" type="CharacterBody2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_se52m"]
+animation = &"light_intensity"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqd85"]
+animation = &"light_variation"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_alqxi"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_e6vx5"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mmmmd"]
+graph_offset = Vector2(-775.146, 63.1636)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_gqd85")
+nodes/Animation/position = Vector2(-360, 40)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_se52m")
+"nodes/Animation 2/position" = Vector2(-340, 240)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_alqxi")
+nodes/Blend2/position = Vector2(-60, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_e6vx5")
+nodes/TimeScale/position = Vector2(140, 120)
+node_connections = [&"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"TimeScale", 0, &"Blend2", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_gqd85"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e6vx5"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mmmmd"]
+animation = &"light_variation"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ebnew"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o7t2h"]
+graph_offset = Vector2(-635.332, -19.9315)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_gqd85")
+nodes/Add2/position = Vector2(-80, 80)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_mmmmd")
+nodes/Animation/position = Vector2(-360, -20)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_e6vx5")
+"nodes/Animation 2/position" = Vector2(-320, 220)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ebnew")
+nodes/TimeScale/position = Vector2(146, 111)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_e6vx5"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ebnew"]
+animation = &"float"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o7t2h"]
+animation = &"light_variation"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_se52m"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_alqxi"]
+graph_offset = Vector2(-704.1, -127.5)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_e6vx5")
+nodes/Add2/position = Vector2(-140, 40)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_o7t2h")
+nodes/Animation/position = Vector2(-440, -100)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ebnew")
+"nodes/Animation 2/position" = Vector2(-440, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_se52m")
+nodes/TimeScale/position = Vector2(120, 80)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqd85"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ebnew"]
+states/Start/position = Vector2(201, 100)
+states/blink/node = SubResource("AnimationNodeBlendTree_mmmmd")
+states/blink/position = Vector2(500, 179)
+states/fall/node = SubResource("AnimationNodeBlendTree_o7t2h")
+states/fall/position = Vector2(575, 92)
+states/float/node = SubResource("AnimationNodeBlendTree_alqxi")
+states/float/position = Vector2(405, 92)
+transitions = ["Start", "float", SubResource("AnimationNodeStateMachineTransition_gqd85")]
+graph_offset = Vector2(-63, -97.5)
+
+[node name="Ignythos" type="CharacterBody2D" node_paths=PackedStringArray("animation_controller")]
 collision_layer = 0
 script = ExtResource("1_3esly")
+animation_controller = NodePath("AnimationController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6dbx8")
@@ -191,8 +278,24 @@ material = SubResource("ShaderMaterial_dpruq")
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_s8wuu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationController" type="Node" parent="." node_paths=PackedStringArray("tree")]
+script = ExtResource("6_gqd85")
+tree = NodePath("AnimationTree")
+metadata/_custom_type_script = "uid://cunw6ai4h1521"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationController"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_gqd85")
 }
-autoplay = "float"
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationController"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_ebnew")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blink/Blend2/blend_amount = -1.0
+parameters/blink/TimeScale/scale = 1.0
+parameters/fall/Add2/add_amount = 1.0
+parameters/fall/TimeScale/scale = 1.0
+parameters/float/Add2/add_amount = 1.0
+parameters/float/TimeScale/scale = 1.0
