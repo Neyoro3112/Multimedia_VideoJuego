@@ -868,4 +868,4 @@ color = Color(0.804743, 0.804743, 0.804743, 1)
 environment = SubResource("Environment_sk71q")
 
 [node name="Ignythos" parent="." instance=ExtResource("6_8dwts")]
-position = Vector2(-64, 133)
+position = Vector2(-457, 135)
