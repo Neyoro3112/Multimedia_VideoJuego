@@ -4,9 +4,6 @@ var follow_marker: Marker2D = null
 @export var following_entity: Entity :
 	set(entity):
 		following_entity = entity
-		pickup_area.set_deferred("monitoring", following_entity == null)
-		print("Setting monitoring: ", following_entity)
-		
 
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var sprite_2d: Sprite2D = $Node2D/Sprite2D
@@ -14,6 +11,7 @@ var follow_marker: Marker2D = null
 
 func _ready():
 	if not following_entity: following_entity = null
+	pickup_area.set_deferred("monitoring", following_entity == null)
 
 func get_follow_marker_from_entity() -> Marker2D:
 	if not following_entity: 
@@ -42,6 +40,7 @@ func _physics_process(_delta: float):
 	if not following_entity.hurtbox.healthComponent.is_alive:
 		following_entity = null
 		follow_marker = null
+		pickup_area.set_deferred("monitoring", following_entity == null)
 		point_light_2d.energy = 10
 		velocity.y = gravity * _delta
 		move_and_slide()
@@ -58,4 +57,5 @@ func _on_pickup_area_body_entered(body: Entity) -> void:
 	if following_entity or body is not Entity: return
 	dead = false
 	following_entity = body
+	pickup_area.set_deferred("monitoring", following_entity == null)
 	
