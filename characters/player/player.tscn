@@ -1990,7 +1990,7 @@ position = Vector2(30, 19)
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("immortability_timer")]
 script = ExtResource("8_fs3de")
 immortability_timer = NodePath("Timer")
-max_health = 1
+max_health = 5
 
 [node name="Timer" type="Timer" parent="Health"]
 wait_time = 0.8
