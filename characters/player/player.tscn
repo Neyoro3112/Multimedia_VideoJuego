@@ -2146,12 +2146,6 @@ script = ExtResource("19_kyfeq")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -1)
-scale = Vector2(0.666667, 0.666667)
-zoom = Vector2(1.555, 1.555)
-position_smoothing_enabled = true
-
 [connection signal="health_changed" from="Health" to="DebugLabel" method="_on_health_health_changed"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Hit" method="_on_hurt_box_hit"]
 [connection signal="hit" from="HurtBox" to="ActionFSM/Death" method="_on_hurt_box_hit"]
