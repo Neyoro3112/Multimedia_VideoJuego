@@ -15,9 +15,14 @@ func _ready():
 func trigger_shake(_dmg: int, _healthComponent: HealthComponent, _hitbox: HitBox) -> void:
 	shake_strength = max_shake
 
-func _process(_delta: float):
+func _follow_target(delta: float):
+	if not player: return
+	global_position = player.global_position
+	
+
+func _process(delta: float):
 	if shake_strength > 0:
-		shake_strength = lerp(shake_strength, 0., shake_fade * _delta)
+		shake_strength = lerp(shake_strength, 0., shake_fade * delta)
 		offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
-	if player:
-		global_position = player.global_position
+	
+	_follow_target(delta)

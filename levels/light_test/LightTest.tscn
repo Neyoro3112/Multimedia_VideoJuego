@@ -2430,7 +2430,7 @@ script = ExtResource("2_4lvoi")
 metadata/_custom_type_script = "uid://c55j1xbl78peu"
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -39.446)
+position = Vector2(0, -66.436)
 motion_scale = Vector2(1, 0.8)
 motion_mirroring = Vector2(1152, 0)
 
@@ -2440,7 +2440,7 @@ texture = ExtResource("1_sk71q")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1161.65, -78.892)
+position = Vector2(1054.19, -132.872)
 motion_scale = Vector2(0.4, 0.6)
 
 [node name="ParallaxTiles" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer2"]
@@ -2449,7 +2449,7 @@ tile_map_data = PackedByteArray("AAAPAA4ABAABAAMAAAAPAA0ABAABAAIAAAAPAAwABAABAAI
 tile_set = SubResource("TileSet_0gc8t")
 
 [node name="CagesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(968.042, -39.446)
+position = Vector2(878.493, -66.436)
 motion_scale = Vector2(0.5, 0.8)
 
 [node name="ParallaxTiles" type="TileMapLayer" parent="ParallaxBackground/CagesLayer"]
@@ -2468,7 +2468,7 @@ offset_bottom = 289.0
 
 [node name="CagesLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = 1
-position = Vector2(774.433, -29.5845)
+position = Vector2(702.794, -49.827)
 motion_scale = Vector2(0.6, 0.85)
 
 [node name="ParallaxTiles" type="TileMapLayer" parent="ParallaxBackground/CagesLayer2"]
@@ -2487,7 +2487,7 @@ offset_bottom = 289.0
 
 [node name="CagesLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = 1
-position = Vector2(193.608, 0)
+position = Vector2(175.699, -3.05176e-05)
 motion_scale = Vector2(0.9, 1)
 
 [node name="ParallaxTiles" type="TileMapLayer" parent="ParallaxBackground/CagesLayer3"]
@@ -2498,6 +2498,7 @@ tile_set = SubResource("TileSet_0gc8t")
 
 [node name="CagesLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = 1
+position = Vector2(0, -3.05176e-05)
 
 [node name="ParallaxTiles" type="TileMapLayer" parent="ParallaxBackground/CagesLayer4"]
 modulate = Color(0.489051, 0.43207, 0.571943, 1)
@@ -2511,7 +2512,7 @@ script = ExtResource("2_4lvoi")
 metadata/_custom_type_script = "uid://c55j1xbl78peu"
 
 [node name="CagesLayer4" type="ParallaxLayer" parent="ParallaxForeground"]
-position = Vector2(-387.217, 0)
+position = Vector2(-351.397, -3.05176e-05)
 scale = Vector2(3, 3)
 motion_scale = Vector2(1.2, 1)
 
@@ -2522,7 +2523,7 @@ tile_map_data = PackedByteArray("AAAwAAgABAAHAAwAAAAwAAkABAAHAA0AAAAxAAgABAAIAAw
 tile_set = SubResource("TileSet_0gc8t")
 
 [node name="CagesLayer5" type="ParallaxLayer" parent="ParallaxForeground"]
-position = Vector2(-580.825, 0)
+position = Vector2(-527.096, -3.05176e-05)
 scale = Vector2(3, 3)
 motion_scale = Vector2(1.3, 1)
 
@@ -2534,6 +2535,7 @@ tile_set = SubResource("TileSet_0gc8t")
 
 [node name="CagesLayer3" type="ParallaxLayer" parent="ParallaxForeground"]
 z_index = 100
+position = Vector2(0, -3.05176e-05)
 motion_mirroring = Vector2(1152, 648)
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxForeground/CagesLayer3"]
@@ -2582,7 +2584,6 @@ limit_top = -350
 limit_bottom = 350
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 4.0
 script = ExtResource("8_ldgqh")
 player = NodePath("../Rohein")
 shake_fade = 5.0
