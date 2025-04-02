@@ -15,7 +15,7 @@ func _ready():
 func trigger_shake(_dmg: int, _healthComponent: HealthComponent, _hitbox: HitBox) -> void:
 	shake_strength = max_shake
 
-func _follow_target(delta: float):
+func _follow_target(_delta: float):
 	if not player: return
 	global_position = player.global_position
 	
